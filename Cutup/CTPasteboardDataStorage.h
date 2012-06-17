@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CTPasteboardDataStorage : NSObject
+@interface CTPasteboardDataStorage : NSObject <NSCoding>
 
 @property (strong) NSMutableDictionary *pasteboardItemData;
 

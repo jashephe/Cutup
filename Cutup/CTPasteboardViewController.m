@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 James Shepherdson. All rights reserved.
 //
 
+#define PASTEBOARD_CACHE_FILE [CTCacheDirectory() stringByAppendingPathComponent:@"pbitems"]
+
 #import "CTPasteboardViewController.h"
 #import "CTPasteboardDataStorage.h"
 #import "MAKVONotificationCenter.h"
@@ -29,6 +31,30 @@
 	}
     
 	return self;
+}
+
+NSString* CTCacheDirectory() {
+	NSString *path = nil;
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+	if ([paths count]) {
+		NSString *bundleName =
+        [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+		path = [[paths objectAtIndex:0] stringByAppendingPathComponent:bundleName];
+	}
+	return path;
+}
+
+- (BOOL)archivePasteboardItemsData {
+	NSLog(@"%@", CTCacheDirectory());
+	return [NSKeyedArchiver archiveRootObject:pasteboardItemsData toFile:PASTEBOARD_CACHE_FILE];
+}
+
+- (BOOL)unarchivePasteboardItemsData {
+	if ([[NSFileManager defaultManager] fileExistsAtPath:PASTEBOARD_CACHE_FILE]) {
+		pasteboardItemsData = [NSKeyedUnarchiver unarchiveObjectWithFile:PASTEBOARD_CACHE_FILE];
+		return YES;
+	}
+	return NO;
 }
 
 - (void)awakeFromNib {

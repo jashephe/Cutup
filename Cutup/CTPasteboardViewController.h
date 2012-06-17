@@ -16,6 +16,8 @@
 @property (strong) CTPasteboardItemViewController *pasteboardItemViewController;
 @property (strong) NSMutableArray *pasteboardItemsData;
 
+- (BOOL)archivePasteboardItemsData;
+- (BOOL)unarchivePasteboardItemsData;
 - (IBAction)performControlBarAction:(NSSegmentedControl *)sender;
 
 @end

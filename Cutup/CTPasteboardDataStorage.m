@@ -8,6 +8,8 @@
 
 #import "CTPasteboardDataStorage.h"
 
+#define PASTEBOARD_ITEM_DATA_KEY @"pasteboardItemData"
+
 @implementation CTPasteboardDataStorage
 
 @synthesize pasteboardItemData;
@@ -19,6 +21,19 @@
 		[self storeDataFromPasteboardItem:thePasteboardItem];
 	}
 	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	NSMutableDictionary *data = [aDecoder decodeObjectForKey:PASTEBOARD_ITEM_DATA_KEY];
+	self = [super init];
+	if (self) {
+		[self setPasteboardItemData:data];
+	}
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:pasteboardItemData forKey:PASTEBOARD_ITEM_DATA_KEY];
 }
 
 - (void)storeDataFromPasteboardItem:(NSPasteboardItem *)thePasteboardItem {

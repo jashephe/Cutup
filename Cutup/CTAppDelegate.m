@@ -18,16 +18,18 @@
 @interface CTAppDelegate ()
 @property (strong) NSWindow *window;
 @property (strong) NSStatusItem *statusItem;
+@property (strong) CTPasteboardViewController *pasteboardViewController;
 @end
 
 @implementation CTAppDelegate
 
 @synthesize statusItemMenu;
-@synthesize window, statusItem;
+@synthesize window, statusItem, pasteboardViewController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	CTPasteboardViewController *pasteboardViewController = [[CTPasteboardViewController alloc] initWithNibName:@"CTPasteboardViewController" bundle:[NSBundle mainBundle]];
+	pasteboardViewController = [[CTPasteboardViewController alloc] initWithNibName:@"CTPasteboardViewController" bundle:[NSBundle mainBundle]];
 	[pasteboardViewController.view setFrame:NSMakeRect(0, 0, [[[NSUserDefaults standardUserDefaults] valueForKey:@"pasteboardWindow.width"] floatValue], [[[NSUserDefaults standardUserDefaults] valueForKey:@"pasteboardWindow.height"] floatValue])];
+	[pasteboardViewController unarchivePasteboardItemsData];
 	window = [[CTPasteboardWindow alloc] initWithContentRect:pasteboardViewController.view.frame styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 	[window setMinSize:NSMakeSize(200, 150)];
 	[window setLevel:NSFloatingWindowLevel];
@@ -47,6 +49,10 @@
 	[statusItem setHighlightMode:YES];
 	[statusItem setTitle:@"CT"];
 	[statusItem setMenu:statusItemMenu];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification {
+	[pasteboardViewController archivePasteboardItemsData];
 }
 
 - (void)configurePreferences {
