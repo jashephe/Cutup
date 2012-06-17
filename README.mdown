@@ -1,0 +1,7 @@
+#Cutup
+Slightly less-than-minimalist clipboard buffering for Mac OS X.
+
+##About
+I've always liked to use [Jumpcut](http://jumpcut.sourceforge.net/) to manage my clipboard.  It does exactly one thing:  clipboard buffering.  No "useful features" that just end up getting in your way, no "productivity enhancements" that you'll never use; just clipboard buffering.  But what is clipboard buffering?  To explain, let me ask you this:  have you ever copied something to the clipboard and then overwritten it by accident?  A clipboard buffer keeps track of the various things that you put on the pasteboard and saves a copy of them so that you can not only recover what what was last on your clipboard, but what was on your clipboard two days ago.
+
+Anyway, Jumpcut and I were getting along just fine, except for a few problems, the most important of which is that Jumpcut only works with plain text.  Nice, but why shouldn't I be able to keep track of other things beyond just text.  Plus, I needed an excuse to introduce myself to Cocoa development.

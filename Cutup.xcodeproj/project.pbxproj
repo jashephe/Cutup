@@ -7,28 +7,84 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A051013157C24FB00AFE56F /* NSBezierPath+MCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A051011157C24D300AFE56F /* NSBezierPath+MCAdditions.m */; };
+		1A1A98F9157521640064D44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A98F8157521640064D44D /* Carbon.framework */; };
 		1A2DE82D15698B0800B6CF87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2DE82C15698B0800B6CF87 /* Cocoa.framework */; };
 		1A2DE83715698B0800B6CF87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DE83515698B0800B6CF87 /* InfoPlist.strings */; };
 		1A2DE83915698B0800B6CF87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DE83815698B0800B6CF87 /* main.m */; };
-		1A2DE83D15698B0800B6CF87 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DE83B15698B0800B6CF87 /* Credits.rtf */; };
-		1A2DE84015698B0800B6CF87 /* CTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DE83F15698B0800B6CF87 /* CTAppDelegate.m */; };
 		1A2DE84315698B0800B6CF87 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DE84115698B0800B6CF87 /* MainMenu.xib */; };
+		1A2DE85415698EB000B6CF87 /* CTPasteboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DE85215698EB000B6CF87 /* CTPasteboardViewController.xib */; };
+		1A2DE85C156990F900B6CF87 /* CTPasteboardWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DE85B156990F900B6CF87 /* CTPasteboardWindow.m */; };
+		1A3D753D158A3B9700E8BC16 /* NSWindow+Center.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D753C158A3B9700E8BC16 /* NSWindow+Center.m */; };
+		1A48718A1575212E00E03B89 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A487188157520A700E03B89 /* DDHotKeyCenter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1A6A8614158AE19A0026F809 /* CTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A8615158AE19A0026F809 /* CTAppDelegate.m */; };
+		1A8A251C156DBB1200F0FE0C /* CTPasteboardItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A251B156DBB1200F0FE0C /* CTPasteboardItemViewController.m */; };
+		1A8B38EA157299D300941D91 /* CTOverlayPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B38E81572998200941D91 /* CTOverlayPopUpButtonCell.m */; };
+		1A8BCDD6157EEF160043742F /* NSString+Range.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8BCDD5157EEF160043742F /* NSString+Range.m */; };
+		1A8BCDDA157EFE020043742F /* NSToolbar+Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8BCDD9157EFE020043742F /* NSToolbar+Height.m */; };
+		1A95651C157E8FBC00AE14C1 /* CTPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A95651B157E8FBC00AE14C1 /* CTPreferencesManager.m */; };
+		1A956522157E900900AE14C1 /* CTPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A956521157E900900AE14C1 /* CTPreferences.xib */; };
+		1A9E47EA1577D059009E6654 /* CTPasteboardDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E47E91577D059009E6654 /* CTPasteboardDataStorage.m */; };
+		1AA380461582B41A00804E5F /* CTShortcutRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA380451582B41A00804E5F /* CTShortcutRecorder.m */; };
+		1AA380491582B53300804E5F /* CTShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA380481582B53300804E5F /* CTShortcutRecorderCell.m */; };
+		1ABECDFB156FE237006B0CE5 /* CTPasteboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABECDFC156FE237006B0CE5 /* CTPasteboardViewController.m */; };
+		1ADD6988157A862A009A3B7B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADD6987157A862A009A3B7B /* Credits.rtf */; };
+		1ADF6679157AB343005E5E83 /* Cutup.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1ADF6678157AB343005E5E83 /* Cutup.icns */; };
+		1AF23F8115898F1C0088ABD2 /* MAKVONotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF23F7F158989C80088ABD2 /* MAKVONotificationCenter.m */; };
+		1AF23F8215898F570088ABD2 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AEFB8C115883A2D002327CD /* LaunchAtLoginController.m */; };
+		1AF7F704158ADAA00005480C /* CTShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF7F703158ADAA00005480C /* CTShortcut.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A051011157C24D300AFE56F /* NSBezierPath+MCAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+MCAdditions.m"; sourceTree = "<group>"; };
+		1A051012157C24D300AFE56F /* NSBezierPath+MCAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+MCAdditions.h"; sourceTree = "<group>"; };
+		1A1A98F8157521640064D44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		1A2DE82815698B0800B6CF87 /* Cutup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cutup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2DE82C15698B0800B6CF87 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1A2DE82F15698B0800B6CF87 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1A2DE83015698B0800B6CF87 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1A2DE83115698B0800B6CF87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1A2DE83415698B0800B6CF87 /* Cutup-Info.plist */ = {isa = PBXFileReference; path = "Cutup-Info.plist"; sourceTree = "<group>"; };
+		1A2DE83415698B0800B6CF87 /* Cutup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cutup-Info.plist"; sourceTree = "<group>"; };
 		1A2DE83615698B0800B6CF87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A2DE83815698B0800B6CF87 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1A2DE83A15698B0800B6CF87 /* Cutup-Prefix.pch */ = {isa = PBXFileReference; path = "Cutup-Prefix.pch"; sourceTree = "<group>"; };
-		1A2DE83C15698B0800B6CF87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		1A2DE83E15698B0800B6CF87 /* CTAppDelegate.h */ = {isa = PBXFileReference; path = CTAppDelegate.h; sourceTree = "<group>"; };
-		1A2DE83F15698B0800B6CF87 /* CTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTAppDelegate.m; sourceTree = "<group>"; };
+		1A2DE83A15698B0800B6CF87 /* Cutup-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cutup-Prefix.pch"; sourceTree = "<group>"; };
+		1A2DE83E15698B0800B6CF87 /* CTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTAppDelegate.h; sourceTree = "<group>"; };
 		1A2DE84215698B0800B6CF87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1A2DE85015698EB000B6CF87 /* CTPasteboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPasteboardViewController.h; sourceTree = "<group>"; };
+		1A2DE85215698EB000B6CF87 /* CTPasteboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTPasteboardViewController.xib; sourceTree = "<group>"; };
+		1A2DE85A156990F900B6CF87 /* CTPasteboardWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPasteboardWindow.h; sourceTree = "<group>"; };
+		1A2DE85B156990F900B6CF87 /* CTPasteboardWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPasteboardWindow.m; sourceTree = "<group>"; };
+		1A3D753B158A3B9700E8BC16 /* NSWindow+Center.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+Center.h"; sourceTree = "<group>"; };
+		1A3D753C158A3B9700E8BC16 /* NSWindow+Center.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+Center.m"; sourceTree = "<group>"; };
+		1A487187157520A700E03B89 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
+		1A487188157520A700E03B89 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
+		1A6A8615158AE19A0026F809 /* CTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTAppDelegate.m; sourceTree = "<group>"; };
+		1A8A251A156DBB1200F0FE0C /* CTPasteboardItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPasteboardItemViewController.h; sourceTree = "<group>"; };
+		1A8A251B156DBB1200F0FE0C /* CTPasteboardItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPasteboardItemViewController.m; sourceTree = "<group>"; };
+		1A8B38E71572998200941D91 /* CTOverlayPopUpButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTOverlayPopUpButtonCell.h; sourceTree = "<group>"; };
+		1A8B38E81572998200941D91 /* CTOverlayPopUpButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTOverlayPopUpButtonCell.m; sourceTree = "<group>"; };
+		1A8BCDD4157EEF160043742F /* NSString+Range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Range.h"; sourceTree = "<group>"; };
+		1A8BCDD5157EEF160043742F /* NSString+Range.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Range.m"; sourceTree = "<group>"; };
+		1A8BCDD8157EFE020043742F /* NSToolbar+Height.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSToolbar+Height.h"; sourceTree = "<group>"; };
+		1A8BCDD9157EFE020043742F /* NSToolbar+Height.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSToolbar+Height.m"; sourceTree = "<group>"; };
+		1A95651A157E8FBC00AE14C1 /* CTPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPreferencesManager.h; sourceTree = "<group>"; };
+		1A95651B157E8FBC00AE14C1 /* CTPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPreferencesManager.m; sourceTree = "<group>"; };
+		1A956521157E900900AE14C1 /* CTPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTPreferences.xib; sourceTree = "<group>"; };
+		1A9E47E81577D059009E6654 /* CTPasteboardDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPasteboardDataStorage.h; sourceTree = "<group>"; };
+		1A9E47E91577D059009E6654 /* CTPasteboardDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPasteboardDataStorage.m; sourceTree = "<group>"; };
+		1AA380441582B41A00804E5F /* CTShortcutRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShortcutRecorder.h; sourceTree = "<group>"; };
+		1AA380451582B41A00804E5F /* CTShortcutRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShortcutRecorder.m; sourceTree = "<group>"; };
+		1AA380471582B53300804E5F /* CTShortcutRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShortcutRecorderCell.h; sourceTree = "<group>"; };
+		1AA380481582B53300804E5F /* CTShortcutRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShortcutRecorderCell.m; sourceTree = "<group>"; };
+		1ABECDFC156FE237006B0CE5 /* CTPasteboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPasteboardViewController.m; sourceTree = "<group>"; };
+		1ADD6987157A862A009A3B7B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		1ADF6678157AB343005E5E83 /* Cutup.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Cutup.icns; sourceTree = "<group>"; };
+		1AEFB8C015883A2D002327CD /* LaunchAtLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		1AEFB8C115883A2D002327CD /* LaunchAtLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		1AF23F7F158989C80088ABD2 /* MAKVONotificationCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAKVONotificationCenter.m; sourceTree = "<group>"; };
+		1AF23F80158989C80088ABD2 /* MAKVONotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAKVONotificationCenter.h; sourceTree = "<group>"; };
+		1AF7F702158ADAA00005480C /* CTShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShortcut.h; sourceTree = "<group>"; };
+		1AF7F703158ADAA00005480C /* CTShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShortcut.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,12 +93,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2DE82D15698B0800B6CF87 /* Cocoa.framework in Frameworks */,
+				1A1A98F9157521640064D44D /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A051010157C24C900AFE56F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1A051012157C24D300AFE56F /* NSBezierPath+MCAdditions.h */,
+				1A051011157C24D300AFE56F /* NSBezierPath+MCAdditions.m */,
+				1A8BCDD4157EEF160043742F /* NSString+Range.h */,
+				1A8BCDD5157EEF160043742F /* NSString+Range.m */,
+				1A8BCDD8157EFE020043742F /* NSToolbar+Height.h */,
+				1A8BCDD9157EFE020043742F /* NSToolbar+Height.m */,
+				1A3D753B158A3B9700E8BC16 /* NSWindow+Center.h */,
+				1A3D753C158A3B9700E8BC16 /* NSWindow+Center.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		1A2DE81D15698B0800B6CF87 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +144,7 @@
 		1A2DE82E15698B0800B6CF87 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A1A98F8157521640064D44D /* Carbon.framework */,
 				1A2DE82F15698B0800B6CF87 /* AppKit.framework */,
 				1A2DE83015698B0800B6CF87 /* CoreData.framework */,
 				1A2DE83115698B0800B6CF87 /* Foundation.framework */,
@@ -83,8 +156,22 @@
 			isa = PBXGroup;
 			children = (
 				1A2DE83E15698B0800B6CF87 /* CTAppDelegate.h */,
-				1A2DE83F15698B0800B6CF87 /* CTAppDelegate.m */,
+				1A6A8615158AE19A0026F809 /* CTAppDelegate.m */,
 				1A2DE84115698B0800B6CF87 /* MainMenu.xib */,
+				1A2DE85015698EB000B6CF87 /* CTPasteboardViewController.h */,
+				1ABECDFC156FE237006B0CE5 /* CTPasteboardViewController.m */,
+				1A2DE85215698EB000B6CF87 /* CTPasteboardViewController.xib */,
+				1A8A251A156DBB1200F0FE0C /* CTPasteboardItemViewController.h */,
+				1A8A251B156DBB1200F0FE0C /* CTPasteboardItemViewController.m */,
+				1A9E47E81577D059009E6654 /* CTPasteboardDataStorage.h */,
+				1A9E47E91577D059009E6654 /* CTPasteboardDataStorage.m */,
+				1A95651A157E8FBC00AE14C1 /* CTPreferencesManager.h */,
+				1A95651B157E8FBC00AE14C1 /* CTPreferencesManager.m */,
+				1A956521157E900900AE14C1 /* CTPreferences.xib */,
+				1A2DE8591569901300B6CF87 /* Auxiliary Interface */,
+				1A3AFC2D1582F59D00D0A8BF /* Shortcut Recorder */,
+				1A487189157520DF00E03B89 /* Associated Code */,
+				1A051010157C24C900AFE56F /* Categories */,
 				1A2DE83315698B0800B6CF87 /* Supporting Files */,
 			);
 			path = Cutup;
@@ -93,13 +180,51 @@
 		1A2DE83315698B0800B6CF87 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1ADF6678157AB343005E5E83 /* Cutup.icns */,
 				1A2DE83415698B0800B6CF87 /* Cutup-Info.plist */,
 				1A2DE83515698B0800B6CF87 /* InfoPlist.strings */,
 				1A2DE83815698B0800B6CF87 /* main.m */,
 				1A2DE83A15698B0800B6CF87 /* Cutup-Prefix.pch */,
-				1A2DE83B15698B0800B6CF87 /* Credits.rtf */,
+				1ADD6987157A862A009A3B7B /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1A2DE8591569901300B6CF87 /* Auxiliary Interface */ = {
+			isa = PBXGroup;
+			children = (
+				1A2DE85A156990F900B6CF87 /* CTPasteboardWindow.h */,
+				1A2DE85B156990F900B6CF87 /* CTPasteboardWindow.m */,
+				1A8B38E71572998200941D91 /* CTOverlayPopUpButtonCell.h */,
+				1A8B38E81572998200941D91 /* CTOverlayPopUpButtonCell.m */,
+			);
+			name = "Auxiliary Interface";
+			sourceTree = "<group>";
+		};
+		1A3AFC2D1582F59D00D0A8BF /* Shortcut Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				1AF7F702158ADAA00005480C /* CTShortcut.h */,
+				1AF7F703158ADAA00005480C /* CTShortcut.m */,
+				1AA380441582B41A00804E5F /* CTShortcutRecorder.h */,
+				1AA380451582B41A00804E5F /* CTShortcutRecorder.m */,
+				1AA380471582B53300804E5F /* CTShortcutRecorderCell.h */,
+				1AA380481582B53300804E5F /* CTShortcutRecorderCell.m */,
+			);
+			name = "Shortcut Recorder";
+			sourceTree = "<group>";
+		};
+		1A487189157520DF00E03B89 /* Associated Code */ = {
+			isa = PBXGroup;
+			children = (
+				1AEFB8C015883A2D002327CD /* LaunchAtLoginController.h */,
+				1AEFB8C115883A2D002327CD /* LaunchAtLoginController.m */,
+				1A487187157520A700E03B89 /* DDHotKeyCenter.h */,
+				1A487188157520A700E03B89 /* DDHotKeyCenter.m */,
+				1AF23F80158989C80088ABD2 /* MAKVONotificationCenter.h */,
+				1AF23F7F158989C80088ABD2 /* MAKVONotificationCenter.m */,
+			);
+			name = "Associated Code";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +255,7 @@
 			attributes = {
 				CLASSPREFIX = CT;
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "James Shepherdson";
 			};
 			buildConfigurationList = 1A2DE82215698B0800B6CF87 /* Build configuration list for PBXProject "Cutup" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -154,8 +280,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2DE83715698B0800B6CF87 /* InfoPlist.strings in Resources */,
-				1A2DE83D15698B0800B6CF87 /* Credits.rtf in Resources */,
 				1A2DE84315698B0800B6CF87 /* MainMenu.xib in Resources */,
+				1A2DE85415698EB000B6CF87 /* CTPasteboardViewController.xib in Resources */,
+				1ADD6988157A862A009A3B7B /* Credits.rtf in Resources */,
+				1ADF6679157AB343005E5E83 /* Cutup.icns in Resources */,
+				1A956522157E900900AE14C1 /* CTPreferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +296,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2DE83915698B0800B6CF87 /* main.m in Sources */,
-				1A2DE84015698B0800B6CF87 /* CTAppDelegate.m in Sources */,
+				1A6A8614158AE19A0026F809 /* CTAppDelegate.m in Sources */,
+				1ABECDFB156FE237006B0CE5 /* CTPasteboardViewController.m in Sources */,
+				1A8A251C156DBB1200F0FE0C /* CTPasteboardItemViewController.m in Sources */,
+				1A9E47EA1577D059009E6654 /* CTPasteboardDataStorage.m in Sources */,
+				1A95651C157E8FBC00AE14C1 /* CTPreferencesManager.m in Sources */,
+				1A2DE85C156990F900B6CF87 /* CTPasteboardWindow.m in Sources */,
+				1A8B38EA157299D300941D91 /* CTOverlayPopUpButtonCell.m in Sources */,
+				1AA380461582B41A00804E5F /* CTShortcutRecorder.m in Sources */,
+				1AA380491582B53300804E5F /* CTShortcutRecorderCell.m in Sources */,
+				1AF23F8215898F570088ABD2 /* LaunchAtLoginController.m in Sources */,
+				1A48718A1575212E00E03B89 /* DDHotKeyCenter.m in Sources */,
+				1AF23F8115898F1C0088ABD2 /* MAKVONotificationCenter.m in Sources */,
+				1A051013157C24FB00AFE56F /* NSBezierPath+MCAdditions.m in Sources */,
+				1A8BCDD6157EEF160043742F /* NSString+Range.m in Sources */,
+				1A8BCDDA157EFE020043742F /* NSToolbar+Height.m in Sources */,
+				1A3D753D158A3B9700E8BC16 /* NSWindow+Center.m in Sources */,
+				1AF7F704158ADAA00005480C /* CTShortcut.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,14 +325,6 @@
 				1A2DE83615698B0800B6CF87 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1A2DE83B15698B0800B6CF87 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1A2DE83C15698B0800B6CF87 /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		1A2DE84115698B0800B6CF87 /* MainMenu.xib */ = {
@@ -251,6 +388,11 @@
 		1A2DE84715698B0800B6CF87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cutup/Cutup-Prefix.pch";
 				INFOPLIST_FILE = "Cutup/Cutup-Info.plist";
@@ -262,6 +404,11 @@
 		1A2DE84815698B0800B6CF87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cutup/Cutup-Prefix.pch";
 				INFOPLIST_FILE = "Cutup/Cutup-Info.plist";
@@ -289,6 +436,7 @@
 				1A2DE84815698B0800B6CF87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
