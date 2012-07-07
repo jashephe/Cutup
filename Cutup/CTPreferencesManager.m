@@ -51,8 +51,8 @@
 		toolbar = [[NSToolbar alloc] initWithIdentifier:[NSString stringWithFormat:@"%@.preferences.toolbar", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]]];
 	
 	[toolbar setAllowsUserCustomization:NO];
-    [toolbar setAutosavesConfiguration:NO];
-    [toolbar setDisplayMode:NSToolbarDisplayModeIconAndLabel];
+	[toolbar setAutosavesConfiguration:NO];
+	[toolbar setDisplayMode:NSToolbarDisplayModeIconAndLabel];
 	[toolbar setDelegate:self];
 	[window setToolbar:toolbar];
 	if ([toolbar respondsToSelector:@selector(setSelectedItemIdentifier:)]) {

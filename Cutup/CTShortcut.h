@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CTShortcut : NSObject
+@interface CTShortcut : NSObject <NSCoding>
 
 @property (strong) NSString *characters;
 @property unsigned short keyCode;

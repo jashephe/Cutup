@@ -8,55 +8,74 @@
 
 #import "CTPasteboardItemViewController.h"
 #import "CTOverlayPopUpButtonCell.h"
-#import "MAKVONotificationCenter.h"
+#import "CTPasteboardItemDataRepresentationView.h"
 
 @interface CTPasteboardItemViewController ()
 @property NSTrackingArea *trackingArea;
 @property NSPopUpButton *pasteboardTypeButton;
+@property NSString *activePasteboardType;
 @end
 
 @implementation CTPasteboardItemViewController
 
-@synthesize pasteboardItem;
-@synthesize trackingArea, pasteboardTypeButton;
+@synthesize pasteboardItemDataStore;
+@synthesize trackingArea, pasteboardTypeButton, activePasteboardType;
 
 - (id)init {
 	self = [super init];
 	if (self) {
 		trackingArea = [[NSTrackingArea alloc] initWithRect:self.view.bounds options:(NSTrackingMouseEnteredAndExited | NSTrackingInVisibleRect | NSTrackingActiveAlways) owner:self userInfo:nil];
-		
-		__unsafe_unretained CTPasteboardItemViewController *pasteboardItemViewControllerRef = self;
-		__unsafe_unretained NSTrackingArea *trackingAreaRef = trackingArea;
-		[self addObservationKeyPath:@"pasteboardItem" options:NSKeyValueObservingOptionNew block:^(MAKVONotification *notification) {
-			NSPasteboardItem *newPasteboardItem = (NSPasteboardItem *)[notification newValue];
-			NSString *pasteboardType = [pasteboardItemViewControllerRef determineBestRepresentationFromTypes:[newPasteboardItem types]];
-			NSView *theView = [pasteboardItemViewControllerRef prepareViewForPasteboardType:pasteboardType];
-			pasteboardItemViewControllerRef.view = theView;
-			[pasteboardItemViewControllerRef.view addTrackingArea:trackingAreaRef];
-			
-//			pasteboardTypeButton = [[NSPopUpButton alloc] init];
-//			[pasteboardTypeButton setFrameSize:NSMakeSize(160, 25)];
-//			[pasteboardTypeButton setFrameOrigin:NSMakePoint((self.view.bounds.size.width - pasteboardTypeButton.bounds.size.width)/2, (self.view.bounds.size.height - pasteboardTypeButton.bounds.size.height)/2)];
-//			[pasteboardTypeButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
-//			[pasteboardTypeButton setCell:[[CTOverlayPopUpButtonCell alloc] init]];
-//			[pasteboardTypeButton setMenu:[pasteboardItemViewControllerRef preparePasteboardTypesMenuFromItem:newPasteboardItem]];
-//			[pasteboardTypeButton selectItemWithTitle:pasteboardType];
-		}];
+		self.view = [[CTPasteboardItemDataRepresentationView alloc] init];
+		[self.view setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+		[self.view addTrackingArea:trackingArea];
+		pasteboardTypeButton = [[NSPopUpButton alloc] init];
+		[pasteboardTypeButton setFrameSize:NSMakeSize(160, 25)];
+		[pasteboardTypeButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
+		[pasteboardTypeButton setCell:[[CTOverlayPopUpButtonCell alloc] init]];
+		[pasteboardTypeButton selectItemWithTitle:activePasteboardType];
+		[pasteboardTypeButton setTarget:self];
+		[pasteboardTypeButton setAction:@selector(selectNewType:)];
 	}
 	return self;
 }
 
-- (NSString *)determineBestRepresentationFromTypes:(NSArray *)types {
-	if ([types containsObject:@"public.tiff"])
-		return @"public.tiff";
-	else if ([types containsObject:@"com.apple.icns"])
-		return @"com.apple.icns";
-	else if ([types containsObject:@"public.rtf"])
-		return @"public.rtf";
-	else if ([types containsObject:@"public.utf8-plain-text"])
-		return @"public.utf8-plain-text";
-	else
-		return @"";
+- (CTPasteboardItemDataStore *)pasteboardItemDataStore {
+	return pasteboardItemDataStore;
+}
+
+- (void)setPasteboardItemDataStore:(CTPasteboardItemDataStore *)newPasteboardItemDataStore {
+	activePasteboardType = [newPasteboardItemDataStore availableTypeFromArray:[NSArray arrayWithObjects:NSPasteboardTypePNG, NSPasteboardTypeTIFF, NSPasteboardTypeRTF, NSPasteboardTypeString, nil]];
+	[self updateRepresentationViewWithType:activePasteboardType];
+	
+	[pasteboardTypeButton setFrameOrigin:NSMakePoint((self.view.bounds.size.width - pasteboardTypeButton.bounds.size.width)/2, (self.view.bounds.size.height - pasteboardTypeButton.bounds.size.height)/2)];
+	[pasteboardTypeButton setMenu:[self preparePasteboardTypesMenuFromItemDataStore:newPasteboardItemDataStore]];
+	
+	pasteboardItemDataStore = newPasteboardItemDataStore;
+}
+
+- (void)updateRepresentationViewWithType:(NSString *)type {
+	if ([type isEqualToString:NSPasteboardTypePNG] || [type isEqualToString:NSPasteboardTypeTIFF] || [type isEqualToString:@"com.apple.icns"]) {
+		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationImage];
+		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSImage alloc] initWithData:[pasteboardItemDataStore dataForType:type]]];
+	}
+	else if ([type isEqualToString:NSPasteboardTypeRTF]) {
+		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationAttributedString];
+		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSAttributedString alloc] initWithData:[pasteboardItemDataStore dataForType:type] options:nil documentAttributes:nil error:nil]];
+	}
+//	else if ([type isEqualToString:NSPasteboardTypeString]) {
+//		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationString];
+//		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSString alloc] initWithData:[pasteboardItemDataStore dataForType:type] encoding:NSUTF8StringEncoding]];
+//	}
+	else {
+//		[(CTPasteboardItemDataRepresentationView *)self.view setType:@""];
+//		[(CTPasteboardItemDataRepresentationView *)self.view setObject:nil];
+		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationString];
+		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSString alloc] initWithData:[pasteboardItemDataStore dataForType:type] encoding:NSUTF8StringEncoding]];
+	}
+	
+	NSLog(@"Updating display to type %@", type);
+	NSLog(@"Item Date:  %@", [[pasteboardItemDataStore metadata] objectForKey:CTPasteboardDate]);
+	[self.view setNeedsDisplay:YES];
 }
 
 #pragma mark Overlay Button
@@ -67,53 +86,25 @@
 
 - (void)mouseExited:(NSEvent *)theEvent {
 	[pasteboardTypeButton removeFromSuperview];
+	[self.view setNeedsDisplay:YES];
 }
 
-- (NSMenu *)preparePasteboardTypesMenuFromItem:(NSPasteboardItem *)thePasteboardItem {
+- (void)selectNewType:(NSPopUpButton *)sender {
+	[self updateRepresentationViewWithType:[[sender selectedItem] title]];
+}
+
+- (NSMenu *)preparePasteboardTypesMenuFromItemDataStore:(CTPasteboardItemDataStore *)thePasteboardItemDataStore {
 	NSMenu *menu = [[NSMenu alloc] init];
-	for (NSString *type in [thePasteboardItem types])
+	for (NSString *type in [thePasteboardItemDataStore types])
 		[menu addItem:[[NSMenuItem alloc] initWithTitle:type action:nil keyEquivalent:@""]];
 	return menu;
 }
 
-#pragma mark Subview Management
+#pragma mark Pasteboard Management
 
-- (NSView*)prepareViewForPasteboardType:(NSString *)pasteboardType {
-	if ([pasteboardType isEqualToString:@"public.utf8-plain-text"] || [pasteboardType isEqualToString:@"public.file-url"]) {
-		NSTextView *textView = [[NSTextView alloc] init];
-		[textView setDrawsBackground:NO];
-		[textView setEditable:NO];
-		[textView setString:[[NSString alloc] initWithData:[pasteboardItem dataForType:pasteboardType] encoding:NSUTF8StringEncoding]];
-		[textView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-		return textView;
-	}
-	else if ([pasteboardType isEqualToString:@"public.rtf"]) {
-		NSTextView *textView = [[NSTextView alloc] init];
-		[textView.textContainer setWidthTracksTextView:YES];
-		[textView.textContainer setHeightTracksTextView:YES];
-		[textView setDrawsBackground:NO];
-		[textView setEditable:NO];
-		[textView.textStorage setAttributedString:[[NSAttributedString alloc] initWithData:[pasteboardItem dataForType:pasteboardType] options:nil documentAttributes:nil error:nil]];
-		[textView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-		return textView;
-	}
-	else if ([pasteboardType isEqualToString:@"public.tiff"] || [pasteboardType isEqualToString:@"public.png"] || [pasteboardType isEqualToString:@"com.apple.icns"]) {
-		NSImageView *imageView = [[NSImageView alloc] init];
-		[imageView setEditable:NO];
-		[imageView setImage:[[NSImage alloc] initWithData:[pasteboardItem dataForType:pasteboardType]]];
-		[imageView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-		return imageView;
-	}
-	else {
-		NSTextField *label = [[NSTextField alloc] init];
-		[label setEditable:NO];
-		[label setSelectable:NO];
-		[label setDrawsBackground:NO];
-		[label setBordered:NO];
-		[label setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-		[label.cell setTitle:@"No Preview Available"];
-		return label;
-	}
+- (void)overwritePasteboardWithPasteboardItem {
+	[[NSPasteboard generalPasteboard] clearContents];
+	[[NSPasteboard generalPasteboard] writeObjects:[NSArray arrayWithObject:[pasteboardItemDataStore fabricatePasteboardItemWithTypes:[NSArray arrayWithObjects:NSPasteboardTypeString, nil]]]];
 }
 
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CTPasteboardItemDataStore.h"
 
 @interface CTPasteboardItemViewController : NSViewController
 
-@property NSPasteboardItem *pasteboardItem;
+@property CTPasteboardItemDataStore *pasteboardItemDataStore;
+
+- (void)overwritePasteboardWithPasteboardItem;
 
 @end

@@ -66,7 +66,7 @@
 	shortcut.characters = [theEvent charactersIgnoringModifiers];
 	shortcut.keyCode = [theEvent keyCode];
 	shortcut.modifierFlags = [NSEvent modifierFlags];
-	NSLog(@"C:%@, K:%hu, M:%lu", shortcut.characters, shortcut.keyCode, shortcut.modifierFlags);
+	NSLog(@"Shortcut | Character:%@, Key Code:%hu, Modifiers:%lu", shortcut.characters, shortcut.keyCode, shortcut.modifierFlags);
 	[self setNeedsDisplay:YES];
 	isRecording = NO;
 	return YES;

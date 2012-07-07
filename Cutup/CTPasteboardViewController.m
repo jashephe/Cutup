@@ -6,10 +6,8 @@
 //  Copyright (c) 2012 James Shepherdson. All rights reserved.
 //
 
-#define PASTEBOARD_CACHE_FILE [CTCacheDirectory() stringByAppendingPathComponent:@"pbitems"]
-
 #import "CTPasteboardViewController.h"
-#import "CTPasteboardDataStorage.h"
+#import "CTPasteboardItemDataStore.h"
 #import "MAKVONotificationCenter.h"
 
 @interface CTPasteboardViewController ()
@@ -29,23 +27,13 @@
 		pasteboardItemViewController = [[CTPasteboardItemViewController alloc] init];
 		pasteboardItemsData = [[NSMutableArray alloc] initWithCapacity:1];
 	}
-    
+	
 	return self;
 }
 
-NSString* CTCacheDirectory() {
-	NSString *path = nil;
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	if ([paths count]) {
-		NSString *bundleName =
-        [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-		path = [[paths objectAtIndex:0] stringByAppendingPathComponent:bundleName];
-	}
-	return path;
-}
+#define PASTEBOARD_CACHE_FILE [CTCacheDirectory() stringByAppendingPathComponent:CTPasteboardItemsCacheFileName]
 
 - (BOOL)archivePasteboardItemsData {
-	NSLog(@"%@", CTCacheDirectory());
 	return [NSKeyedArchiver archiveRootObject:pasteboardItemsData toFile:PASTEBOARD_CACHE_FILE];
 }
 
@@ -57,53 +45,94 @@ NSString* CTCacheDirectory() {
 	return NO;
 }
 
-- (void)awakeFromNib {
-	__block NSView *pasteboardContentViewRef = pasteboardContentView;
-	[pasteboardItemViewController addObservationKeyPath:@"view" options:NSKeyValueObservingOptionNew block:^(MAKVONotification *notification) {
-		NSView *newView = (NSView *)[notification newValue];
-		[newView setFrame:pasteboardContentViewRef.bounds];
-		if ([pasteboardContentViewRef subviews].count > 0)
-			[pasteboardContentViewRef replaceSubview:[[pasteboardContentViewRef subviews] objectAtIndex:0] with:newView];
-		else
-			[pasteboardContentViewRef addSubview:newView];
-	}];
+- (BOOL)deleteArchivedPasteboardItems {
+	return [[NSFileManager defaultManager] removeItemAtPath:PASTEBOARD_CACHE_FILE error:nil];
 }
+
+- (void)awakeFromNib {
+	[pasteboardItemViewController.view setFrame:pasteboardContentView.bounds];
+	[pasteboardContentView addSubview:pasteboardItemViewController.view];
+}
+
+#pragma mark Navigation Actions Actions
 
 - (IBAction)performControlBarAction:(NSSegmentedControl *)sender {
 	if ([sender selectedSegment] == 0) {
-		if (currentIndex < pasteboardItemsData.count - 1)
-			currentIndex += 1;
+		[self shiftPasteboardIndexLeft];
 	}
 	else if ([sender selectedSegment] == 1) {
-		[[NSPasteboard generalPasteboard] clearContents];
-		[[NSPasteboard generalPasteboard] writeObjects:[NSArray arrayWithObject:[[pasteboardItemsData objectAtIndex:currentIndex] fabricatePasteboardItem]]];
-		[pasteboardItemsData removeObjectAtIndex:currentIndex];
-		[self.view.window orderOut:self];
-		currentIndex = 0;
+		[self changePasteboard];
 	}
 	else if ([sender selectedSegment] == 2) {
-		if (currentIndex > 0)
-			currentIndex -= 1;
+		[self shiftPasteboardIndexRight];
 	}
-	[self updatePasteboardItemDisplay];
+}
+
+- (void)changePasteboard {
+	[pasteboardItemViewController overwritePasteboardWithPasteboardItem];
+	[self.view.window orderOut:self];
+	[pasteboardItemsData removeObjectAtIndex:currentIndex];
+	currentIndex = 0;
+}
+
+- (void)shiftPasteboardIndexLeft {
+	if (currentIndex < pasteboardItemsData.count - 1) {
+		currentIndex += 1;
+		[self updatePasteboardItemDisplay];
+	}
+}
+
+- (void)shiftPasteboardIndexRight {
+	if (currentIndex > 0) {
+		currentIndex -= 1;
+		[self updatePasteboardItemDisplay];
+	}
 }
 
 - (void)updatePasteboardItemDisplay {
-	if (currentIndex > -1 && currentIndex < pasteboardItemsData.count)
-		[pasteboardItemViewController setPasteboardItem:[[pasteboardItemsData objectAtIndex:currentIndex] fabricatePasteboardItem]];
-	[controlBar setLabel:[NSString stringWithFormat:@"%i of %lu", currentIndex+1, pasteboardItemsData.count] forSegment:1];
+	[pasteboardItemViewController setPasteboardItemDataStore:[pasteboardItemsData objectAtIndex:currentIndex]];
+	[controlBar setLabel:[NSString stringWithFormat:@"%i / %lu", currentIndex + 1, pasteboardItemsData.count] forSegment:1];
 }
 
-#pragma mark Pasteboard Monitoring
+#pragma mark Pasteboard Management
 
 - (void)checkPasteboard {
 	NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
 	if ([pasteboard changeCount] > lastPasteboardChangeCount && [pasteboard pasteboardItems].count > 0) {
 		NSPasteboardItem *currentItem = [[pasteboard pasteboardItems] objectAtIndex:0];
-		CTPasteboardDataStorage *pasteboardItemDataStore = [[CTPasteboardDataStorage alloc] initWithPasteboardItem:currentItem];
+		CTPasteboardItemDataStore *pasteboardItemDataStore = [[CTPasteboardItemDataStore alloc] initWithPasteboardItem:currentItem];
+		[pasteboardItemDataStore setMetadata:[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], CTPasteboardDate, nil]];
 		[pasteboardItemsData insertObject:pasteboardItemDataStore atIndex:0];
 		[self updatePasteboardItemDisplay];
 		lastPasteboardChangeCount = [pasteboard changeCount];
+	}
+}
+
+#pragma mark Keyboard Actions
+
+#define KEY_LEFT 123
+#define KEY_RIGHT 124
+#define KEY_RETURN 36
+#define KEY_ENTER 76
+#define KEY_ESCAPE 53
+- (void)keyDown:(NSEvent *)theEvent {
+	NSLog(@"%i", [theEvent keyCode]);
+	switch ([theEvent keyCode]) {
+		case KEY_LEFT:
+			[self shiftPasteboardIndexLeft];
+			break;
+		case KEY_RIGHT:
+			[self shiftPasteboardIndexRight];
+			break;
+		case KEY_RETURN:
+		case KEY_ENTER:
+			[self changePasteboard];
+			break;
+		case KEY_ESCAPE:
+			[self.view.window orderOut:self];
+			break;
+		default:
+			break;
 	}
 }
 

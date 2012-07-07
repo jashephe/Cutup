@@ -40,10 +40,9 @@
 					<object class="NSSegmentedControl" id="416586730">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{90, 9}, {128, 20}}</string>
+						<string key="NSFrame">{{95, 9}, {118, 20}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSegmentedCell" key="NSCell" id="979107553">
@@ -66,8 +65,8 @@
 									<int key="NSSegmentItemImageScaling">0</int>
 								</object>
 								<object class="NSSegmentItem">
-									<double key="NSSegmentItemWidth">60</double>
-									<string key="NSSegmentItemLabel">1 of 1</string>
+									<double key="NSSegmentItemWidth">50</double>
+									<string key="NSSegmentItemLabel">1 / 1</string>
 									<int key="NSSegmentItemTag">1</int>
 									<int key="NSSegmentItemImageScaling">0</int>
 								</object>
@@ -111,7 +110,7 @@
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="1005"/>
 					</object>
-					<int key="connectionID">2</int>
+					<int key="connectionID">234</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -119,7 +118,7 @@
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="459590197"/>
 					</object>
-					<int key="connectionID">171</int>
+					<int key="connectionID">235</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -127,7 +126,7 @@
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="416586730"/>
 					</object>
-					<int key="connectionID">219</int>
+					<int key="connectionID">236</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -135,7 +134,7 @@
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="416586730"/>
 					</object>
-					<int key="connectionID">231</int>
+					<int key="connectionID">237</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -208,7 +207,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">231</int>
+			<int key="maxID">237</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

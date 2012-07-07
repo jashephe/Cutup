@@ -9,7 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface CTPasteboardWindow : NSWindow
-
+@property NSGradient *backgroundGradient;
+@property NSColor *borderColor;
 @end
 
 @interface CTGradientWindowFrameView : NSView

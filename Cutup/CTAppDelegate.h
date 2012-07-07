@@ -12,4 +12,7 @@
 
 @property IBOutlet NSMenu *statusItemMenu;
 
+- (IBAction)showPreferences:(id)sender;
+- (IBAction)togglePasteboardWindow:(id)sender;
+
 @end

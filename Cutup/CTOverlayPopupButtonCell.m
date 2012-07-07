@@ -12,8 +12,8 @@
 
 // Constants
 #define BORDER_RADUIS			4.0f
-#define ARROW_SECTION_WIDTH		20.0f
-#define X_PADDING				5.0f
+#define ARROW_SECTION_WIDTH		16.0f
+#define TEXT_PADDING			4.0f
 #define ARROW_WIDTH				6.0f
 #define ARROW_HEIGHT			4.0f
 // ---------
@@ -36,11 +36,11 @@
 	NSBezierPath *arrow = [NSBezierPath bezierPath];
 	[arrow moveToPoint:NSMakePoint(arrStartX, arrMidY + 1)];
 	[arrow lineToPoint:NSMakePoint(arrStartX + ARROW_WIDTH, arrMidY + 1)];
-	[arrow lineToPoint:NSMakePoint(arrStartX + ARROW_WIDTH/2, arrMidY + 1 + ARROW_HEIGHT)];
+	[arrow lineToPoint:NSMakePoint(arrStartX + ARROW_WIDTH/2.0f, arrMidY + 1 + ARROW_HEIGHT)];
 	[arrow closePath];
 	[arrow moveToPoint:NSMakePoint(arrStartX, arrMidY - 1)];
 	[arrow lineToPoint:NSMakePoint(arrStartX + ARROW_WIDTH, arrMidY - 1)];
-	[arrow lineToPoint:NSMakePoint(arrStartX + ARROW_WIDTH/2, arrMidY - 1 - ARROW_HEIGHT)];
+	[arrow lineToPoint:NSMakePoint(arrStartX + ARROW_WIDTH/2.0f, arrMidY - 1 - ARROW_HEIGHT)];
 	[arrow closePath];
 	[[NSColor colorWithCalibratedWhite:1.0f alpha:0.8f] set];
 	[arrow fill];
@@ -50,7 +50,7 @@
 	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
 	[paragraphStyle setLineBreakMode:NSLineBreakByTruncatingTail];
 	NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:self.title attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont controlContentFontOfSize:13], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, [NSColor colorWithCalibratedWhite:1.0f alpha:0.8f], NSShadowAttributeName, nil]];
-	[attributedTitle drawInRect:NSInsetRect(NSMakeRect(0, 0, cellFrame.size.width - ARROW_SECTION_WIDTH, cellFrame.size.height), X_PADDING, (cellFrame.size.height - attributedTitle.size.height)/2.0f)];
+	[attributedTitle drawInRect:NSInsetRect(NSMakeRect(0, 0, cellFrame.size.width - ARROW_SECTION_WIDTH, cellFrame.size.height), TEXT_PADDING, (cellFrame.size.height - attributedTitle.size.height)/2.0f)];
 }
 
 @end

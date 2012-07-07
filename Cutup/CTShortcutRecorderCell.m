@@ -13,7 +13,7 @@
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	[self drawBorderWithFrame:cellFrame];
-	[self drawTextWithFrame:NSInsetRect(cellFrame, 6, 3)];
+	[self drawTextWithFrame:cellFrame];
 }
 
 - (void)drawBorderWithFrame:(NSRect)borderFrame {
@@ -24,11 +24,11 @@
 	[border stroke];
 	
 	if ([self showsFirstResponder] && [self focusRingType] == NSFocusRingOnly) {
-        [NSGraphicsContext saveGraphicsState];
-        NSSetFocusRingStyle([self focusRingType]);
-        [border fill];
-        [NSGraphicsContext restoreGraphicsState];
-    }
+		[NSGraphicsContext saveGraphicsState];
+		NSSetFocusRingStyle([self focusRingType]);
+		[border fill];
+		[NSGraphicsContext restoreGraphicsState];
+	}
 }
 
 - (void)drawTextWithFrame:(NSRect)textFrame {
