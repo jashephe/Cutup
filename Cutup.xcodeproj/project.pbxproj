@@ -22,8 +22,6 @@
 		1A8B38EA157299D300941D91 /* CTOverlayPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B38E81572998200941D91 /* CTOverlayPopUpButtonCell.m */; };
 		1A8BCDD6157EEF160043742F /* NSString+Range.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8BCDD5157EEF160043742F /* NSString+Range.m */; };
 		1A8BCDDA157EFE020043742F /* NSToolbar+Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8BCDD9157EFE020043742F /* NSToolbar+Height.m */; };
-		1A95651C157E8FBC00AE14C1 /* CTPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A95651B157E8FBC00AE14C1 /* CTPreferencesManager.m */; };
-		1A956522157E900900AE14C1 /* CTPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A956521157E900900AE14C1 /* CTPreferences.xib */; };
 		1A9745321598167400CE6C5D /* NSImage+ProportionalScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9745311598167400CE6C5D /* NSImage+ProportionalScaling.m */; };
 		1A99F2A01591696D0090371A /* CTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A99F29F1591696D0090371A /* CTUtils.m */; };
 		1A9E47EA1577D059009E6654 /* CTPasteboardItemDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E47E91577D059009E6654 /* CTPasteboardItemDataStore.m */; };
@@ -69,9 +67,6 @@
 		1A8BCDD5157EEF160043742F /* NSString+Range.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Range.m"; sourceTree = "<group>"; };
 		1A8BCDD8157EFE020043742F /* NSToolbar+Height.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSToolbar+Height.h"; sourceTree = "<group>"; };
 		1A8BCDD9157EFE020043742F /* NSToolbar+Height.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSToolbar+Height.m"; sourceTree = "<group>"; };
-		1A95651A157E8FBC00AE14C1 /* CTPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPreferencesManager.h; sourceTree = "<group>"; };
-		1A95651B157E8FBC00AE14C1 /* CTPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPreferencesManager.m; sourceTree = "<group>"; };
-		1A956521157E900900AE14C1 /* CTPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTPreferences.xib; sourceTree = "<group>"; };
 		1A9745301598167400CE6C5D /* NSImage+ProportionalScaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+ProportionalScaling.h"; sourceTree = "<group>"; };
 		1A9745311598167400CE6C5D /* NSImage+ProportionalScaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+ProportionalScaling.m"; sourceTree = "<group>"; };
 		1A99F29E1591696D0090371A /* CTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTUtils.h; sourceTree = "<group>"; };
@@ -173,9 +168,6 @@
 				1A42E8FB1596D0F000C9DBC1 /* CTPasteboardItemDataRepresentationView.m */,
 				1A9E47E81577D059009E6654 /* CTPasteboardItemDataStore.h */,
 				1A9E47E91577D059009E6654 /* CTPasteboardItemDataStore.m */,
-				1A95651A157E8FBC00AE14C1 /* CTPreferencesManager.h */,
-				1A95651B157E8FBC00AE14C1 /* CTPreferencesManager.m */,
-				1A956521157E900900AE14C1 /* CTPreferences.xib */,
 				1A99F29E1591696D0090371A /* CTUtils.h */,
 				1A99F29F1591696D0090371A /* CTUtils.m */,
 				1A2DE8591569901300B6CF87 /* Auxiliary Interface */,
@@ -294,7 +286,6 @@
 				1A2DE85415698EB000B6CF87 /* CTPasteboardViewController.xib in Resources */,
 				1ADD6988157A862A009A3B7B /* Credits.rtf in Resources */,
 				1ADF6679157AB343005E5E83 /* Cutup.icns in Resources */,
-				1A956522157E900900AE14C1 /* CTPreferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +301,6 @@
 				1ABECDFB156FE237006B0CE5 /* CTPasteboardViewController.m in Sources */,
 				1A8A251C156DBB1200F0FE0C /* CTPasteboardItemViewController.m in Sources */,
 				1A9E47EA1577D059009E6654 /* CTPasteboardItemDataStore.m in Sources */,
-				1A95651C157E8FBC00AE14C1 /* CTPreferencesManager.m in Sources */,
 				1A2DE85C156990F900B6CF87 /* CTPasteboardWindow.m in Sources */,
 				1A8B38EA157299D300941D91 /* CTOverlayPopUpButtonCell.m in Sources */,
 				1AA380461582B41A00804E5F /* CTShortcutRecorder.m in Sources */,

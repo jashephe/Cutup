@@ -18,6 +18,8 @@ extern NSString *const CTPasteboardItemsMemoryKey;
 
 #pragma mark Other Keys
 extern NSString *const CTPasteboardItemDataKey;
+extern NSString *const CTPasteboardItemMetadataKey;
+
 extern NSString *const CTShortcutCharactersKey;
 extern NSString *const CTShortcutKeyCodesKey;
 extern NSString *const CTShortcutModifierFlagsKey;

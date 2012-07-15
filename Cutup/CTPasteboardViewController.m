@@ -116,7 +116,6 @@
 #define KEY_ENTER 76
 #define KEY_ESCAPE 53
 - (void)keyDown:(NSEvent *)theEvent {
-	NSLog(@"%i", [theEvent keyCode]);
 	switch ([theEvent keyCode]) {
 		case KEY_LEFT:
 			[self shiftPasteboardIndexLeft];

@@ -20,6 +20,8 @@ NSString *const CTPasteboardItemsMemoryKey = @"pasteboardItemMemory";
 
 #pragma mark Other Keys
 NSString *const CTPasteboardItemDataKey = @"pasteboardItem.data";
+NSString *const CTPasteboardItemMetadataKey = @"pasteboardItem.metadata";
+
 NSString *const CTShortcutCharactersKey = @"shortcut.characters";
 NSString *const CTShortcutKeyCodesKey = @"shortcut.keycodes";
 NSString *const CTShortcutModifierFlagsKey = @"shortcut.modifiers";

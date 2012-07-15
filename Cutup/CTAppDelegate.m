@@ -10,7 +10,6 @@
 #import "CTPasteboardViewController.h"
 #import "CTPasteboardWindow.h"
 #import "DDHotKeyCenter.h"
-#import "CTPreferencesManager.h"
 #import "NSWindow+Center.h"
 #import "MAKVONotificationCenter.h"
 #import "LaunchAtLoginController.h"
@@ -28,9 +27,8 @@
 @synthesize window, statusItem, pasteboardViewController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	NSLog(@"%@", NSPasteboardTypeMultipleTextSelection);
 	[self setPreferenceDefaults];
-	[[NSColorPanel sharedColorPanel] setShowsAlpha:YES];  // Why this isn't set on a per-color well basis is beyond me.
+	[[NSColorPanel sharedColorPanel] setShowsAlpha:YES];  // Why isn't this set on a per-color well basis?
 	
 	NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/Info.plist"]];
 	NSLog(@"%@ Version:  %@", [plistData objectForKey:@"CFBundleName"], [plistData objectForKey:@"CFBundleVersion"]);
@@ -90,7 +88,7 @@
 #pragma mark IBActions
 
 - (IBAction)showPreferences:(id)sender {
-	[NSBundle loadNibNamed:@"CTPreferences" owner:self];
+	NSLog(@"showPreferences:(id)sender Not implemented.");
 }
 
 - (IBAction)togglePasteboardWindow:(id)sender {

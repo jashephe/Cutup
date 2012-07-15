@@ -28,8 +28,7 @@
 		self.view = [[CTPasteboardItemDataRepresentationView alloc] init];
 		[self.view setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
 		[self.view addTrackingArea:trackingArea];
-		pasteboardTypeButton = [[NSPopUpButton alloc] init];
-		[pasteboardTypeButton setFrameSize:NSMakeSize(160, 25)];
+		pasteboardTypeButton = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(0, 0, 160, 25) pullsDown:NO];
 		[pasteboardTypeButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
 		[pasteboardTypeButton setCell:[[CTOverlayPopUpButtonCell alloc] init]];
 		[pasteboardTypeButton selectItemWithTitle:activePasteboardType];
@@ -44,13 +43,12 @@
 }
 
 - (void)setPasteboardItemDataStore:(CTPasteboardItemDataStore *)newPasteboardItemDataStore {
-	activePasteboardType = [newPasteboardItemDataStore availableTypeFromArray:[NSArray arrayWithObjects:NSPasteboardTypePNG, NSPasteboardTypeTIFF, NSPasteboardTypeRTF, NSPasteboardTypeString, nil]];
+	pasteboardItemDataStore = newPasteboardItemDataStore;
+	activePasteboardType = [pasteboardItemDataStore availableTypeFromArray:[NSArray arrayWithObjects:NSPasteboardTypePNG, NSPasteboardTypeTIFF, NSPasteboardTypeRTF, NSPasteboardTypeString, nil]];
 	[self updateRepresentationViewWithType:activePasteboardType];
 	
 	[pasteboardTypeButton setFrameOrigin:NSMakePoint((self.view.bounds.size.width - pasteboardTypeButton.bounds.size.width)/2, (self.view.bounds.size.height - pasteboardTypeButton.bounds.size.height)/2)];
-	[pasteboardTypeButton setMenu:[self preparePasteboardTypesMenuFromItemDataStore:newPasteboardItemDataStore]];
-	
-	pasteboardItemDataStore = newPasteboardItemDataStore;
+	[pasteboardTypeButton setMenu:[self preparePasteboardTypesMenuFromItemDataStore:pasteboardItemDataStore]];
 }
 
 - (void)updateRepresentationViewWithType:(NSString *)type {
@@ -62,15 +60,15 @@
 		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationAttributedString];
 		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSAttributedString alloc] initWithData:[pasteboardItemDataStore dataForType:type] options:nil documentAttributes:nil error:nil]];
 	}
-//	else if ([type isEqualToString:NSPasteboardTypeString]) {
-//		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationString];
-//		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSString alloc] initWithData:[pasteboardItemDataStore dataForType:type] encoding:NSUTF8StringEncoding]];
-//	}
-	else {
-//		[(CTPasteboardItemDataRepresentationView *)self.view setType:@""];
-//		[(CTPasteboardItemDataRepresentationView *)self.view setObject:nil];
+	else if ([type isEqualToString:NSPasteboardTypeString]) {
 		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationString];
 		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSString alloc] initWithData:[pasteboardItemDataStore dataForType:type] encoding:NSUTF8StringEncoding]];
+	}
+	else {
+		[(CTPasteboardItemDataRepresentationView *)self.view setType:@""];
+		[(CTPasteboardItemDataRepresentationView *)self.view setObject:nil];
+//		[(CTPasteboardItemDataRepresentationView *)self.view setType:CTPasteboardItemRepresentationString];
+//		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSString alloc] initWithData:[pasteboardItemDataStore dataForType:type] encoding:NSUTF8StringEncoding]];
 	}
 	
 	NSLog(@"Updating display to type %@", type);
@@ -104,7 +102,7 @@
 
 - (void)overwritePasteboardWithPasteboardItem {
 	[[NSPasteboard generalPasteboard] clearContents];
-	[[NSPasteboard generalPasteboard] writeObjects:[NSArray arrayWithObject:[pasteboardItemDataStore fabricatePasteboardItemWithTypes:[NSArray arrayWithObjects:NSPasteboardTypeString, nil]]]];
+	[[NSPasteboard generalPasteboard] writeObjects:[NSArray arrayWithObject:[pasteboardItemDataStore fabricatePasteboardItem/*WithTypes:[NSArray arrayWithObjects:NSPasteboardTypeString, nil]*/]]];
 }
 
 @end

@@ -13,7 +13,7 @@
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	[self drawBorderWithFrame:cellFrame];
-	[self drawTextWithFrame:cellFrame];
+	[self drawTextWithFrame:NSInsetRect(cellFrame, 6, 1)];
 }
 
 - (void)drawBorderWithFrame:(NSRect)borderFrame {
@@ -32,7 +32,8 @@
 }
 
 - (void)drawTextWithFrame:(NSRect)textFrame {
-	[((CTShortcutRecorder *)[self controlView]).shortcut.characters drawInRect:textFrame withAttributes:nil];
+//	[[NSFont systemFontOfSize:13.0f] boundingRectForFont]
+	[((CTShortcutRecorder *)[self controlView]).shortcut.characters drawInRect:textFrame withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:13.0f], NSFontAttributeName, [NSColor colorWithCalibratedWhite:0.3f alpha:1.0f], NSForegroundColorAttributeName, nil]];
 }
 
 @end

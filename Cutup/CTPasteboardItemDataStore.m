@@ -32,14 +32,15 @@ NSString *const CTPasteboardDate = @"pasteboardItemDate";
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super init];
 	if (self) {
-		NSMutableDictionary *theData = [aDecoder decodeObjectForKey:CTPasteboardItemDataKey];
-		dataStore = theData;
+		dataStore = [aDecoder decodeObjectForKey:CTPasteboardItemDataKey];
+		metadata = [aDecoder decodeObjectForKey:CTPasteboardItemMetadataKey];
 	}
 	return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
 	[aCoder encodeObject:dataStore forKey:CTPasteboardItemDataKey];
+	[aCoder encodeObject:metadata forKey:CTPasteboardItemMetadataKey];
 }
 
 #pragma mark Pasteboard Storage
