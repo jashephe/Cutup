@@ -35,9 +35,17 @@ NSString* CTCacheDirectory() {
 	NSString *path = nil;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
 	if ([paths count]) {
-		NSString *bundleName =
-		[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+		NSString *bundleName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
 		path = [[paths objectAtIndex:0] stringByAppendingPathComponent:bundleName];
 	}
+	
+	// We want to create the directory if it doesn't exist (otherwise NSKeyedArchiver will fail silently)
+	BOOL isDirectory;
+	[[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory];
+	if (!isDirectory) {
+		NSLog(@"No cache directory.  Creating...");
+		[[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+	}
+	
 	return path;
 }

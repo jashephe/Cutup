@@ -16,7 +16,8 @@ extern NSString *CTPasteboardItemRepresentationImage;
 
 @property NSString *type;
 @property id object;
+@property NSString *comment;
 
-- (id)initWithFrame:(NSRect)frame type:(NSString *)theType object:(id)theObject;
+- (id)initWithFrame:(NSRect)frame type:(NSString *)theType object:(id)theObject comment:(NSString *)theComment;
 
 @end

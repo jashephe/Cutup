@@ -49,6 +49,14 @@
 	return [[NSFileManager defaultManager] removeItemAtPath:PASTEBOARD_CACHE_FILE error:nil];
 }
 
+- (void)clearPasteboardHistory {
+	pasteboardItemsData = [[NSMutableArray alloc] initWithCapacity:1];
+	[self deleteArchivedPasteboardItems];
+	currentIndex = 0;
+	lastPasteboardChangeCount = 0;
+	[self.view setNeedsDisplay:YES];
+}
+
 - (void)awakeFromNib {
 	[pasteboardItemViewController.view setFrame:pasteboardContentView.bounds];
 	[pasteboardContentView addSubview:pasteboardItemViewController.view];
@@ -104,7 +112,8 @@
 		[pasteboardItemDataStore setMetadata:[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], CTPasteboardDate, nil]];
 		[pasteboardItemsData insertObject:pasteboardItemDataStore atIndex:0];
 		[self updatePasteboardItemDisplay];
-		lastPasteboardChangeCount = [pasteboard changeCount];
+		lastPasteboardChangeCount = (int)[pasteboard changeCount];
+		[self archivePasteboardItemsData];
 	}
 }
 

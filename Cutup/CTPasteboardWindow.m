@@ -29,7 +29,8 @@
 @synthesize actualContentView, actualStyleMask;
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)windowStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)deferCreation {
-	if (([super initWithContentRect:contentRect styleMask:NSBorderlessWindowMask backing:bufferingType defer:deferCreation])) {
+	self = [super initWithContentRect:contentRect styleMask:NSBorderlessWindowMask backing:bufferingType defer:deferCreation];
+	if (self) {
 		actualStyleMask = windowStyle;
 		[self setOpaque:NO];
 		[self setBackgroundColor:[NSColor clearColor]];

@@ -326,7 +326,7 @@ static char MAKVONotificationHelperMagicContext = 0;
         SEL				deallocSel = NSSelectorFromString(@"dealloc");/*@selector(dealloc)*/
         Method			dealloc = class_getInstanceMethod(class, deallocSel);
         IMP				origImpl = method_getImplementation(dealloc),
-                        newImpl = imp_implementationWithBlock((__bridge void *)^ (void *obj)
+                        newImpl = imp_implementationWithBlock((__bridge id)((__bridge void *)^ (void *obj)
         {
 //NSLog(@"Auto-deregistering any helpers (%@) on object %@ of class %@", objc_getAssociatedObject((__bridge id)obj, &MAKVONotificationCenter_HelpersKey), obj, class);
             @autoreleasepool
@@ -342,7 +342,7 @@ static char MAKVONotificationHelperMagicContext = 0;
                 }
             }
             ((void (*)(void *, SEL))origImpl)(obj, deallocSel);
-        });
+        }));
         
         class_replaceMethod(class, deallocSel, newImpl, method_getTypeEncoding(dealloc));
         

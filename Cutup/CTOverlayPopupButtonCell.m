@@ -49,7 +49,7 @@
 - (void)drawTitleWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
 	[paragraphStyle setLineBreakMode:NSLineBreakByTruncatingTail];
-	NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:self.title attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont controlContentFontOfSize:13], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, [NSColor colorWithCalibratedWhite:1.0f alpha:0.8f], NSShadowAttributeName, nil]];
+	NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:self.title attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont controlContentFontOfSize:13], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, [NSColor colorWithCalibratedWhite:1.0f alpha:0.8f], NSForegroundColorAttributeName, nil]];
 	[attributedTitle drawInRect:NSInsetRect(NSMakeRect(0, 0, cellFrame.size.width - ARROW_SECTION_WIDTH, cellFrame.size.height), TEXT_PADDING, (cellFrame.size.height - attributedTitle.size.height)/2.0f)];
 }
 

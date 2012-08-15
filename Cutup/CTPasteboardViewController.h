@@ -18,6 +18,7 @@
 
 - (BOOL)archivePasteboardItemsData;
 - (BOOL)unarchivePasteboardItemsData;
+- (void)clearPasteboardHistory;
 - (IBAction)performControlBarAction:(NSSegmentedControl *)sender;
 
 @end

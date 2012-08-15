@@ -17,13 +17,14 @@ NSString *CTPasteboardItemRepresentationImage = @"imageRepresentation";
 
 @implementation CTPasteboardItemDataRepresentationView
 
-@synthesize type, object;
+@synthesize type, object, comment;
 
-- (id)initWithFrame:(NSRect)frame type:(NSString *)theType object:(id)theObject {
+- (id)initWithFrame:(NSRect)frame type:(NSString *)theType object:(id)theObject comment:(NSString *)theComment {
 	self = [super initWithFrame:frame];
 	if (self) {
 		type = theType;
 		object = theObject;
+		comment = theComment;
 	}
 	
 	return self;
@@ -46,6 +47,9 @@ NSString *CTPasteboardItemRepresentationImage = @"imageRepresentation";
 	else {
 		[@"No Representation" drawInRect:drawingRect withAttributes:nil];
 	}
+	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+	[paragraphStyle setAlignment:NSCenterTextAlignment];
+	[comment drawInRect:NSMakeRect(0, 0, self.bounds.size.width, 12) withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSColor colorWithCalibratedWhite:0.7f alpha:1.0f], NSForegroundColorAttributeName, [NSFont systemFontOfSize:10.0f], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, nil]];
 }
 
 @end

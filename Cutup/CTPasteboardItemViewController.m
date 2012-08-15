@@ -44,7 +44,7 @@
 
 - (void)setPasteboardItemDataStore:(CTPasteboardItemDataStore *)newPasteboardItemDataStore {
 	pasteboardItemDataStore = newPasteboardItemDataStore;
-	activePasteboardType = [pasteboardItemDataStore availableTypeFromArray:[NSArray arrayWithObjects:NSPasteboardTypePNG, NSPasteboardTypeTIFF, NSPasteboardTypeRTF, NSPasteboardTypeString, nil]];
+	activePasteboardType = [pasteboardItemDataStore availableTypeFromArray:[NSArray arrayWithObjects:@"com.apple.icns", NSPasteboardTypePNG, NSPasteboardTypeTIFF, NSPasteboardTypeRTF, NSPasteboardTypeString, nil]];
 	[self updateRepresentationViewWithType:activePasteboardType];
 	
 	[pasteboardTypeButton setFrameOrigin:NSMakePoint((self.view.bounds.size.width - pasteboardTypeButton.bounds.size.width)/2, (self.view.bounds.size.height - pasteboardTypeButton.bounds.size.height)/2)];
@@ -71,8 +71,7 @@
 //		[(CTPasteboardItemDataRepresentationView *)self.view setObject:[[NSString alloc] initWithData:[pasteboardItemDataStore dataForType:type] encoding:NSUTF8StringEncoding]];
 	}
 	
-	NSLog(@"Updating display to type %@", type);
-	NSLog(@"Item Date:  %@", [[pasteboardItemDataStore metadata] objectForKey:CTPasteboardDate]);
+	[(CTPasteboardItemDataRepresentationView *)self.view setComment:[NSDateFormatter localizedStringFromDate:[[pasteboardItemDataStore metadata] objectForKey:CTPasteboardDate] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle]];
 	[self.view setNeedsDisplay:YES];
 }
 

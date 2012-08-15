@@ -15,7 +15,7 @@
 - (id)init {
 	self = [super init];
 	if (self) {
-		characters = [[NSString alloc] initWithString:@""];
+		characters = @"";
 	}
 	return self;
 }
@@ -33,7 +33,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
 	[aCoder encodeObject:characters forKey:CTShortcutCharactersKey];
 	[aCoder encodeInt:keyCode forKey:CTShortcutKeyCodesKey];
-	[aCoder encodeInt:modifierFlags forKey:CTShortcutModifierFlagsKey];
+	[aCoder encodeInt:(int)modifierFlags forKey:CTShortcutModifierFlagsKey];
 }
 
 @end

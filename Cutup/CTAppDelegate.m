@@ -41,6 +41,7 @@
 	[window setBackgroundGradient:[[NSGradient alloc] initWithStartingColor:[NSUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] dataForKey:CTPasteboardWindowGradientTopColorKey]] endingColor:[NSUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] dataForKey:CTPasteboardWindowGradientBottomColorKey]]]];
 	[window setBorderColor:[NSUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] dataForKey:CTPasteboardWindowGradientBorderColorKey]]];
 	[window setLevel:NSFloatingWindowLevel];
+	[window setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
 	[window setMinSize:NSMakeSize(200, 200)];
 	[window reallyCenter];
 	[window setContentView:[pasteboardViewController view]];
@@ -51,9 +52,10 @@
 	
 	statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:32];
 	[statusItem setHighlightMode:YES];
-	[statusItem setTitle:@"CT"];
+	[statusItem setImage:[NSImage imageNamed:@"menubar"]];
+	[statusItem setAlternateImage:[NSImage imageNamed:@"menubar-alt"]]; 
 	[statusItem setMenu:statusItemMenu];
-	[self configurePreferenceActions];
+//	[self configurePreferenceActions];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
@@ -70,7 +72,6 @@
 								   [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedWhite:0.92 alpha:0.96]], CTPasteboardWindowGradientBottomColorKey,
 								   [NSArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedWhite:0.5 alpha:1.0]], CTPasteboardWindowGradientBorderColorKey,
 								   [NSNumber numberWithBool:NO], CTLaunchAtLoginKey,
-//								   [NSArchiver archivedDataWithRootObject:[[CTShortcut alloc] init]], CTPasteboardWindowShortcutKey,
 								   [NSNumber numberWithInt:30], CTPasteboardItemsMemoryKey,
 								   nil];
 	[[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:initialValues];
@@ -89,6 +90,10 @@
 
 - (IBAction)showPreferences:(id)sender {
 	NSLog(@"showPreferences:(id)sender Not implemented.");
+}
+
+- (IBAction)clearHistory:(id)sender {
+	[pasteboardViewController clearPasteboardHistory];
 }
 
 - (IBAction)togglePasteboardWindow:(id)sender {
