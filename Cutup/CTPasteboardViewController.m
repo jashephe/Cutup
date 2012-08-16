@@ -111,8 +111,19 @@
 		CTPasteboardItemDataStore *pasteboardItemDataStore = [[CTPasteboardItemDataStore alloc] initWithPasteboardItem:currentItem];
 		[pasteboardItemDataStore setMetadata:[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], CTPasteboardDate, nil]];
 		[pasteboardItemsData insertObject:pasteboardItemDataStore atIndex:0];
+		
+		// Remove items if more than CTPasteboardItemsMemoryKey
+		if (pasteboardItemsData.count > [[NSUserDefaults standardUserDefaults] integerForKey:CTPasteboardItemsMemoryKey]) {
+			NSLog(@"Too many stored pasteboard items items.  Trimming history...");
+			while (pasteboardItemsData.count > [[NSUserDefaults standardUserDefaults] integerForKey:CTPasteboardItemsMemoryKey])
+				[pasteboardItemsData removeLastObject];
+		}
+		
+		// Update view and changeCount
 		[self updatePasteboardItemDisplay];
 		lastPasteboardChangeCount = (int)[pasteboard changeCount];
+		
+		// Save the pasteboard history to the cache file
 		[self archivePasteboardItemsData];
 	}
 }
