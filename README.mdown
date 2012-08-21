@@ -1,8 +1,8 @@
 #Cutup
-Slightly less-than-minimalist clipboard buffering for Mac OS X.
+Minimalist clipboard buffering for Mac OS X.
 
 ##About
-[Jumpcut](http://jumpcut.sourceforge.net/) has always been a great tool for managing clipboards.  It does one thing, and one thing only:  clipboard buffering.  No "useful features" that end up getting in your way, no "productivity enhancements" that you'll never use; just plain vanilla clipboard buffering.  Unfortunately, Jumpcut only works with plain text.  Cutup aims to do better.  Designed to emulate the look and feel of Jumpcut, Cutup's #2 goal (after buffering your clipboard) is staying out of your way.
+[Jumpcut](http://jumpcut.sourceforge.net/) has always been a great tool for managing clipboards. It does one thing, and one thing only: clipboard buffering. No "useful features" that end up getting in your way, no "productivity enhancements" that you'll never use --- just clipboard buffering. Unfortunately, Jumpcut only works with plain text. Cutup aims to do better. Designed to emulate the look and feel of Jumpcut, Cutup's #2 goal (after buffering your clipboard) is staying out of your way.
 
 ##Status
-Cutup is approaching the state of a somewhat usable beta, but I wouldn't trust it just yet.
+Cutup is slowly becoming usable, but I wouldn't trust it for daily use just yet.
