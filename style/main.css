@@ -1,0 +1,90 @@
+body {
+  background: white;
+  margin: 0;
+  padding: 80px 0 0 0;
+  border: 0;
+  vertical-align: baseline;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 300; }
+
+#content {
+  width: 700px;
+  margin: 0 auto 0 auto;
+  line-height: 125%;
+  color: #606060; }
+
+section {
+  margin: 0 0 20px 0; }
+
+p {
+  text-indent: 30px;
+  padding: 0;
+  margin: 0; }
+
+h2 {
+  font-size: 14pt;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 0 0 4px 0;
+  margin: 10px 0 5px 0;
+  color: #2d2d2d; }
+
+h3 {
+  font-size: 12pt;
+  padding: 0 0 4px 0;
+  margin: 5px 0 5px 0;
+  color: #474747; }
+
+#headerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  margin: 0;
+  padding: 0;
+  z-index: 1000; }
+
+#header {
+  padding: 0;
+  margin: 0 auto 0px auto;
+  border-bottom: 1px solid #cccccc;
+  width: 700px;
+  height: 80px; }
+  #header #icon {
+    float: left;
+    height: 80px; }
+  #header h1 {
+    font-weight: bold;
+    font-size: 80px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    line-height: 100%;
+    color: #141414; }
+  #header #linkContainer {
+    display: inline-block;
+    height: 80px;
+    float: right; }
+    #header #linkContainer .linkBox {
+      height: 18px;
+      margin-top: 25px;
+      float: left;
+      border: 1px solid #999999;
+      padding: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit; }
+    #header #linkContainer .linkBox:last-child {
+      margin-right: 0; }
+    #header #linkContainer .linkBox:hover {
+      border: 2px solid #999999;
+      padding: 4px; }
+    #header #linkContainer .linkBox:active {
+      border: 3px solid #999999;
+      padding: 3px; }
+
+.screenshot {
+  margin: 5px;
+  padding: 0; }

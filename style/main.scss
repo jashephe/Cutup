@@ -1,0 +1,120 @@
+$pageWidth: 700px;
+$pageBackground: #ffffff;
+$borderColor: #cccccc;
+$textColor: #606060;
+$headerHeight: 80px;
+$linkBoxHeight: 18px;
+
+body {
+	background: $pageBackground;
+	margin: 0;
+	padding: $headerHeight 0 0 0;
+	border: 0;
+	vertical-align: baseline;
+	font-size: 14px;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-weight: 300;
+}
+
+#content {
+	width: $pageWidth;
+	margin: 0 auto 0 auto;
+	line-height: 125%;
+	color: $textColor;
+}
+
+section {
+	margin: 0 0 20px 0;
+}
+
+p {
+	text-indent: 30px;
+	padding: 0;
+	margin: 0;
+}
+
+h2 {
+	font-size: 14pt;
+	border-bottom: 1px solid lighten($borderColor, 10%);
+	padding: 0 0 4px 0;
+	margin: 10px 0 5px 0;
+	color: darken($textColor, 20%);
+}
+
+h3 {
+	font-size: 12pt;
+	padding: 0 0 4px 0;
+	margin: 5px 0 5px 0;
+	color: darken($textColor, 10%);
+}
+
+#headerContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: $pageBackground;
+	margin: 0;
+	padding: 0;
+	z-index: 1000;
+}
+
+#header {
+	padding: 0;
+	margin: 0 auto 0px auto;
+	border-bottom: 1px solid $borderColor;
+	width: $pageWidth;
+	height: $headerHeight;
+
+	#icon {
+		float: left;
+		height: $headerHeight;
+	}
+
+	h1 {
+		font-weight: bold;
+		font-size: $headerHeight;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		line-height: 100%;
+		color: darken($textColor, 30%);
+	}
+
+	#linkContainer {
+		display: inline-block;
+		height: $headerHeight;
+		float: right;
+		
+		$linkBoxBorderWidth: 1px;
+		$linkBoxPadding: 5px;
+		.linkBox {
+			height: $linkBoxHeight;
+			margin-top: ($headerHeight - $linkBoxHeight - 2*$linkBoxBorderWidth - 2*$linkBoxPadding)/2;
+			float: left;
+			border: $linkBoxBorderWidth solid darken($borderColor, 20%);
+			padding: $linkBoxPadding;
+			margin-right: 10px;
+			cursor: pointer;
+			text-decoration: none;
+			color: inherit;
+		}
+		.linkBox:last-child {
+			margin-right: 0;
+		}
+		.linkBox:hover {
+			border: $linkBoxBorderWidth + 1 solid darken($borderColor, 20%);
+			padding: $linkBoxPadding - 1;
+		}
+		.linkBox:active {
+			border: $linkBoxBorderWidth + 2 solid darken($borderColor, 20%);
+			padding: $linkBoxPadding - 2;
+		}
+	}
+}
+
+.screenshot {
+	margin: 5px;
+	padding: 0;
+}
+
