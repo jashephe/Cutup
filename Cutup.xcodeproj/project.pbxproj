@@ -256,6 +256,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A2DE84615698B0800B6CF87 /* Build configuration list for PBXNativeTarget "Cutup" */;
 			buildPhases = (
+				1A78F68F15E486A50039FEB5 /* ShellScript */,
 				1A2DE82415698B0800B6CF87 /* Sources */,
 				1A2DE82515698B0800B6CF87 /* Frameworks */,
 				1A2DE82615698B0800B6CF87 /* Resources */,
@@ -314,6 +315,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A78F68F15E486A50039FEB5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SHORT_HASH=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $SHORT_HASH\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1A2DE82415698B0800B6CF87 /* Sources */ = {

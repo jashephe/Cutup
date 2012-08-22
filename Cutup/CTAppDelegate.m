@@ -38,7 +38,7 @@
 		[launchAtLoginItem setState:NSOffState];
 	
 	NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/Info.plist"]];
-	NSLog(@"%@ Version:  %@", [plistData objectForKey:@"CFBundleName"], [plistData objectForKey:@"CFBundleVersion"]);
+	NSLog(@"%@ Version:  %@", [plistData objectForKey:@"CFBundleName"], [plistData objectForKey:@"CFBundleShortVersionString"]);
 	
 	pasteboardViewController = [[CTPasteboardViewController alloc] initWithNibName:@"CTPasteboardViewController" bundle:[NSBundle mainBundle]];
 	[pasteboardViewController.view setFrame:NSMakeRect(0, 0, [[[NSUserDefaults standardUserDefaults] valueForKey:CTPasteboardWindowWidthKey] floatValue], [[[NSUserDefaults standardUserDefaults] valueForKey:CTPasteboardWindowHeightKey] floatValue])];
