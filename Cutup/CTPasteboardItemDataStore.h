@@ -21,5 +21,6 @@ extern NSString *const CTPasteboardDate;
 - (NSArray *)types;
 - (NSData *)dataForType:(NSString *)theKey;
 - (NSString *)availableTypeFromArray:(NSArray *)availableTypes;
+- (BOOL)isEqualToPasteboardItemDataStore:(CTPasteboardItemDataStore *)object;
 
 @end

@@ -40,6 +40,7 @@
 - (BOOL)unarchivePasteboardItemsData {
 	if ([[NSFileManager defaultManager] fileExistsAtPath:PASTEBOARD_CACHE_FILE]) {
 		pasteboardItemsData = [NSKeyedUnarchiver unarchiveObjectWithFile:PASTEBOARD_CACHE_FILE];
+		[self updatePasteboardItemDisplay];
 		return YES;
 	}
 	return NO;
@@ -109,22 +110,26 @@
 	if ([pasteboard changeCount] > lastPasteboardChangeCount && [pasteboard pasteboardItems].count > 0) {
 		NSPasteboardItem *currentItem = [[pasteboard pasteboardItems] objectAtIndex:0];
 		CTPasteboardItemDataStore *pasteboardItemDataStore = [[CTPasteboardItemDataStore alloc] initWithPasteboardItem:currentItem];
-		[pasteboardItemDataStore setMetadata:[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], CTPasteboardDate, nil]];
-		[pasteboardItemsData insertObject:pasteboardItemDataStore atIndex:0];
 		
-		// Remove items if more than CTPasteboardItemsMemoryKey
-		if (pasteboardItemsData.count > [[NSUserDefaults standardUserDefaults] integerForKey:CTPasteboardItemsMemoryKey]) {
-			NSLog(@"Too many stored pasteboard items items.  Trimming history...");
-			while (pasteboardItemsData.count > [[NSUserDefaults standardUserDefaults] integerForKey:CTPasteboardItemsMemoryKey])
-				[pasteboardItemsData removeLastObject];
+		//Compare first- and second-most recent items (only save if the item actually changed) (
+		if(pasteboardItemsData.count < 1 || ![pasteboardItemDataStore isEqualToPasteboardItemDataStore:[pasteboardItemsData objectAtIndex:0]]) {
+			[pasteboardItemDataStore setMetadata:[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], CTPasteboardDate, nil]];
+			[pasteboardItemsData insertObject:pasteboardItemDataStore atIndex:0];
+			
+			// Remove items if more than CTPasteboardItemsMemoryKey
+			if (pasteboardItemsData.count > [[NSUserDefaults standardUserDefaults] integerForKey:CTPasteboardItemsMemoryKey]) {
+				NSLog(@"Too many stored pasteboard items items.  Trimming history...");
+				while (pasteboardItemsData.count > [[NSUserDefaults standardUserDefaults] integerForKey:CTPasteboardItemsMemoryKey])
+					[pasteboardItemsData removeLastObject];
+			}
+			
+			// Update view and changeCount
+			[self updatePasteboardItemDisplay];
+			lastPasteboardChangeCount = (int)[pasteboard changeCount];
+			
+			// Save the pasteboard history to the cache file
+			[self archivePasteboardItemsData];
 		}
-		
-		// Update view and changeCount
-		[self updatePasteboardItemDisplay];
-		lastPasteboardChangeCount = (int)[pasteboard changeCount];
-		
-		// Save the pasteboard history to the cache file
-		[self archivePasteboardItemsData];
 	}
 }
 

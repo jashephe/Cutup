@@ -53,7 +53,7 @@
 	[window reallyCenter];
 	[window setContentView:[pasteboardViewController view]];
 	
-	[[[DDHotKeyCenter alloc] init] registerHotKeyWithKeyCode:9 modifierFlags:(NSControlKeyMask | NSShiftKeyMask) task:^(NSEvent *task) {
+	[[[DDHotKeyCenter alloc] init] registerHotKeyWithKeyCode:9 modifierFlags:(NSCommandKeyMask | NSShiftKeyMask) task:^(NSEvent *task) {
 		[self togglePasteboardWindow:nil];
 	}];
 	

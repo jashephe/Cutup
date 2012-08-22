@@ -83,4 +83,16 @@ NSString *const CTPasteboardDate = @"pasteboardItemDate";
 	return nil;
 }
 
+- (BOOL)isEqualToPasteboardItemDataStore:(CTPasteboardItemDataStore *)object {
+	if (self == object)
+		return YES;
+	if ([self types].count == [object types].count) {
+		for (NSString *type in [self types])
+			if (![[self dataForType:type] isEqualTo:[object dataForType:type]])
+				return NO;
+		return YES;
+	}
+	return NO;
+}
+
 @end
