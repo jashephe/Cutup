@@ -23,12 +23,19 @@
 
 @implementation CTAppDelegate
 
-@synthesize statusItemMenu;
+@synthesize statusItemMenu, launchAtLoginItem;
 @synthesize window, statusItem, pasteboardViewController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	[self setPreferenceDefaults];
 	[[NSColorPanel sharedColorPanel] setShowsAlpha:YES];  // Why isn't this set on a per-color well basis?
+	
+	
+	LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+	if([launchController launchAtLogin])
+		[launchAtLoginItem setState:NSOnState];
+	else
+		[launchAtLoginItem setState:NSOffState];
 	
 	NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Contents/Info.plist"]];
 	NSLog(@"%@ Version:  %@", [plistData objectForKey:@"CFBundleName"], [plistData objectForKey:@"CFBundleVersion"]);
@@ -104,6 +111,18 @@
 		[NSApp activateIgnoringOtherApps:YES];
 		[window makeKeyAndOrderFront:self];
 		[window makeFirstResponder:pasteboardViewController];
+	}
+}
+
+- (IBAction)setLaunchesAtLogin:(id)sender {
+	LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+	if ([sender state] == NSOffState) {
+		[launchController setLaunchAtLogin:YES];
+		[sender setState:NSOnState];
+	}
+	else {
+		[launchController setLaunchAtLogin:NO];
+		[sender setState:NSOffState];
 	}
 }
 
