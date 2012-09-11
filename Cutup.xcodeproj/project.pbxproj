@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1A1A98F9157521640064D44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A98F8157521640064D44D /* Carbon.framework */; };
+		1A2AB05615FFE0F600DB0D06 /* pasteboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AB05515FFE0F600DB0D06 /* pasteboard.pdf */; };
+		1A2AB05915FFE6D100DB0D06 /* menubar_alt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AB05715FFE6D100DB0D06 /* menubar_alt.pdf */; };
+		1A2AB05A15FFE6D100DB0D06 /* menubar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AB05815FFE6D100DB0D06 /* menubar.pdf */; };
 		1A2DE82D15698B0800B6CF87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2DE82C15698B0800B6CF87 /* Cocoa.framework */; };
 		1A2DE83715698B0800B6CF87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DE83515698B0800B6CF87 /* InfoPlist.strings */; };
 		1A2DE83915698B0800B6CF87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2DE83815698B0800B6CF87 /* main.m */; };
@@ -17,10 +20,6 @@
 		1A3D753D158A3B9700E8BC16 /* NSWindow+Center.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D753C158A3B9700E8BC16 /* NSWindow+Center.m */; };
 		1A42E8FC1596D0F000C9DBC1 /* CTPasteboardItemDataRepresentationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A42E8FB1596D0F000C9DBC1 /* CTPasteboardItemDataRepresentationView.m */; };
 		1A48718A1575212E00E03B89 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A487188157520A700E03B89 /* DDHotKeyCenter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1A65455915DB2B4A006059DF /* menubar-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A65455515DB2B4A006059DF /* menubar-alt.png */; };
-		1A65455A15DB2B4A006059DF /* menubar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A65455615DB2B4A006059DF /* menubar.png */; };
-		1A65455B15DB2B4A006059DF /* menubar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A65455715DB2B4A006059DF /* menubar@2x.png */; };
-		1A65455C15DB2B4A006059DF /* menubar-alt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A65455815DB2B4A006059DF /* menubar-alt@2x.png */; };
 		1A6A8614158AE19A0026F809 /* CTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A8615158AE19A0026F809 /* CTAppDelegate.m */; };
 		1A8A251C156DBB1200F0FE0C /* CTPasteboardItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A251B156DBB1200F0FE0C /* CTPasteboardItemViewController.m */; };
 		1A8B38EA157299D300941D91 /* CTOverlayPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B38E81572998200941D91 /* CTOverlayPopUpButtonCell.m */; };
@@ -41,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		1A1A98F8157521640064D44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		1A2AB05515FFE0F600DB0D06 /* pasteboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pasteboard.pdf; sourceTree = "<group>"; };
+		1A2AB05715FFE6D100DB0D06 /* menubar_alt.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = menubar_alt.pdf; sourceTree = "<group>"; };
+		1A2AB05815FFE6D100DB0D06 /* menubar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = menubar.pdf; sourceTree = "<group>"; };
 		1A2DE82815698B0800B6CF87 /* Cutup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cutup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2DE82C15698B0800B6CF87 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1A2DE82F15698B0800B6CF87 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -62,10 +64,6 @@
 		1A42E8FB1596D0F000C9DBC1 /* CTPasteboardItemDataRepresentationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPasteboardItemDataRepresentationView.m; sourceTree = "<group>"; };
 		1A487187157520A700E03B89 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
 		1A487188157520A700E03B89 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
-		1A65455515DB2B4A006059DF /* menubar-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar-alt.png"; sourceTree = "<group>"; };
-		1A65455615DB2B4A006059DF /* menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubar.png; sourceTree = "<group>"; };
-		1A65455715DB2B4A006059DF /* menubar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar@2x.png"; sourceTree = "<group>"; };
-		1A65455815DB2B4A006059DF /* menubar-alt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubar-alt@2x.png"; sourceTree = "<group>"; };
 		1A6A8615158AE19A0026F809 /* CTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTAppDelegate.m; sourceTree = "<group>"; };
 		1A8A251A156DBB1200F0FE0C /* CTPasteboardItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPasteboardItemViewController.h; sourceTree = "<group>"; };
 		1A8A251B156DBB1200F0FE0C /* CTPasteboardItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPasteboardItemViewController.m; sourceTree = "<group>"; };
@@ -241,10 +239,9 @@
 			isa = PBXGroup;
 			children = (
 				1ADF6678157AB343005E5E83 /* Cutup.icns */,
-				1A65455515DB2B4A006059DF /* menubar-alt.png */,
-				1A65455615DB2B4A006059DF /* menubar.png */,
-				1A65455715DB2B4A006059DF /* menubar@2x.png */,
-				1A65455815DB2B4A006059DF /* menubar-alt@2x.png */,
+				1A2AB05815FFE6D100DB0D06 /* menubar.pdf */,
+				1A2AB05715FFE6D100DB0D06 /* menubar_alt.pdf */,
+				1A2AB05515FFE0F600DB0D06 /* pasteboard.pdf */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -307,10 +304,9 @@
 				1A2DE85415698EB000B6CF87 /* CTPasteboardViewController.xib in Resources */,
 				1ADD6988157A862A009A3B7B /* Credits.rtf in Resources */,
 				1ADF6679157AB343005E5E83 /* Cutup.icns in Resources */,
-				1A65455915DB2B4A006059DF /* menubar-alt.png in Resources */,
-				1A65455A15DB2B4A006059DF /* menubar.png in Resources */,
-				1A65455B15DB2B4A006059DF /* menubar@2x.png in Resources */,
-				1A65455C15DB2B4A006059DF /* menubar-alt@2x.png in Resources */,
+				1A2AB05615FFE0F600DB0D06 /* pasteboard.pdf in Resources */,
+				1A2AB05915FFE6D100DB0D06 /* menubar_alt.pdf in Resources */,
+				1A2AB05A15FFE6D100DB0D06 /* menubar.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

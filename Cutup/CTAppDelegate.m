@@ -59,8 +59,13 @@
 	
 	statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:32];
 	[statusItem setHighlightMode:YES];
-	[statusItem setImage:[NSImage imageNamed:@"menubar"]];
-	[statusItem setAlternateImage:[NSImage imageNamed:@"menubar-alt"]]; 
+	NSSize iconSize = NSMakeSize(22, 17);
+	NSImage *icon = [NSImage imageNamed:@"menubar"];
+	[icon setSize:iconSize];
+	[statusItem setImage:icon];
+	NSImage *icon_alt = [NSImage imageNamed:@"menubar_alt"];
+	[icon_alt setSize:iconSize];
+	[statusItem setAlternateImage:icon_alt];
 	[statusItem setMenu:statusItemMenu];
 //	[self configurePreferenceActions];
 }
