@@ -17,7 +17,7 @@
 
 @implementation CTPasteboardViewController
 
-@synthesize pasteboardContentView, controlBar, pasteboardItemViewController, pasteboardItemsData;
+@synthesize pasteboardContentView, pasteButton, leftButton, rightButton, pasteboardItemViewController, pasteboardItemsData;
 @synthesize lastPasteboardChangeCount, currentIndex;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -65,42 +65,40 @@
 
 #pragma mark Navigation Actions Actions
 
-- (IBAction)performControlBarAction:(NSSegmentedControl *)sender {
-	if ([sender selectedSegment] == 0) {
-		[self shiftPasteboardIndexLeft];
-	}
-	else if ([sender selectedSegment] == 1) {
-		[self changePasteboard];
-	}
-	else if ([sender selectedSegment] == 2) {
-		[self shiftPasteboardIndexRight];
-	}
-}
-
-- (void)changePasteboard {
+- (IBAction)changePasteboard:(id)sender {
 	[pasteboardItemViewController overwritePasteboardWithPasteboardItem];
 	[self.view.window orderOut:self];
 	[pasteboardItemsData removeObjectAtIndex:currentIndex];
 	currentIndex = 0;
 }
 
-- (void)shiftPasteboardIndexLeft {
+- (IBAction)shiftPasteboardIndexLeft:(id)sender {
 	if (currentIndex < pasteboardItemsData.count - 1) {
 		currentIndex += 1;
 		[self updatePasteboardItemDisplay];
 	}
 }
 
-- (void)shiftPasteboardIndexRight {
+- (IBAction)shiftPasteboardIndexRight:(id)sender {
 	if (currentIndex > 0) {
 		currentIndex -= 1;
 		[self updatePasteboardItemDisplay];
 	}
 }
 
+- (void)manageNavigationAvailability {
+	[leftButton setEnabled:YES];
+	[rightButton setEnabled:YES];
+	if (currentIndex == 0)
+		[rightButton setEnabled:NO];
+	else if (currentIndex == pasteboardItemsData.count - 1)
+		[leftButton setEnabled:NO];
+}
+
 - (void)updatePasteboardItemDisplay {
+	[self manageNavigationAvailability];
 	[pasteboardItemViewController setPasteboardItemDataStore:[pasteboardItemsData objectAtIndex:currentIndex]];
-	[controlBar setLabel:[NSString stringWithFormat:@"%i / %lu", currentIndex + 1, pasteboardItemsData.count] forSegment:1];
+	[pasteButton setTitle:[NSString stringWithFormat:@"%i / %lu", currentIndex + 1, pasteboardItemsData.count]];
 }
 
 #pragma mark Pasteboard Management
@@ -143,14 +141,14 @@
 - (void)keyDown:(NSEvent *)theEvent {
 	switch ([theEvent keyCode]) {
 		case KEY_LEFT:
-			[self shiftPasteboardIndexLeft];
+			[self shiftPasteboardIndexLeft:self];
 			break;
 		case KEY_RIGHT:
-			[self shiftPasteboardIndexRight];
+			[self shiftPasteboardIndexRight:self];
 			break;
 		case KEY_RETURN:
 		case KEY_ENTER:
-			[self changePasteboard];
+			[self changePasteboard:self];
 			break;
 		case KEY_ESCAPE:
 			[self.view.window orderOut:self];

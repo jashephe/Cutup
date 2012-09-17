@@ -47,9 +47,16 @@ NSString *CTPasteboardItemRepresentationImage = @"imageRepresentation";
 	else {
 		[@"No Representation" drawInRect:drawingRect withAttributes:nil];
 	}
-	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-	[paragraphStyle setAlignment:NSCenterTextAlignment];
-	[comment drawInRect:NSMakeRect(0, 0, self.bounds.size.width, 12) withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSColor colorWithCalibratedWhite:0.7f alpha:1.0f], NSForegroundColorAttributeName, [NSFont systemFontOfSize:10.0f], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, nil]];
+	
+#define DATESTAMP_INSET 3
+	NSAttributedString *attributedComment = [[NSAttributedString alloc] initWithString:comment attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSColor colorWithCalibratedWhite:0.9f alpha:1.0f], NSForegroundColorAttributeName, [NSFont systemFontOfSize:10.0f], NSFontAttributeName, nil]];
+	
+	NSRect textRect = NSMakeRect((self.bounds.size.width - attributedComment.size.width)/2, DATESTAMP_INSET, attributedComment.size.width, attributedComment.size.height);
+	
+	[[NSColor colorWithCalibratedWhite:0.0f alpha:0.3f] set];
+	[[NSBezierPath bezierPathWithRoundedRect:NSInsetRect(textRect, -DATESTAMP_INSET, -DATESTAMP_INSET) xRadius:DATESTAMP_INSET*2 yRadius:DATESTAMP_INSET*2] fill];
+	[attributedComment drawInRect:textRect];
+
 }
 
 @end

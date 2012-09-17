@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A1A98F9157521640064D44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A98F8157521640064D44D /* Carbon.framework */; };
-		1A2AB05615FFE0F600DB0D06 /* pasteboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AB05515FFE0F600DB0D06 /* pasteboard.pdf */; };
+		1A2AB05615FFE0F600DB0D06 /* pasteboard_dropdown.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AB05515FFE0F600DB0D06 /* pasteboard_dropdown.pdf */; };
 		1A2AB05915FFE6D100DB0D06 /* menubar_alt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AB05715FFE6D100DB0D06 /* menubar_alt.pdf */; };
 		1A2AB05A15FFE6D100DB0D06 /* menubar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AB05815FFE6D100DB0D06 /* menubar.pdf */; };
 		1A2DE82D15698B0800B6CF87 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2DE82C15698B0800B6CF87 /* Cocoa.framework */; };
@@ -40,7 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1A1A98F8157521640064D44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		1A2AB05515FFE0F600DB0D06 /* pasteboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pasteboard.pdf; sourceTree = "<group>"; };
+		1A2AB05515FFE0F600DB0D06 /* pasteboard_dropdown.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pasteboard_dropdown.pdf; sourceTree = "<group>"; };
 		1A2AB05715FFE6D100DB0D06 /* menubar_alt.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = menubar_alt.pdf; sourceTree = "<group>"; };
 		1A2AB05815FFE6D100DB0D06 /* menubar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = menubar.pdf; sourceTree = "<group>"; };
 		1A2DE82815698B0800B6CF87 /* Cutup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cutup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,7 +241,7 @@
 				1ADF6678157AB343005E5E83 /* Cutup.icns */,
 				1A2AB05815FFE6D100DB0D06 /* menubar.pdf */,
 				1A2AB05715FFE6D100DB0D06 /* menubar_alt.pdf */,
-				1A2AB05515FFE0F600DB0D06 /* pasteboard.pdf */,
+				1A2AB05515FFE0F600DB0D06 /* pasteboard_dropdown.pdf */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 				1A2DE85415698EB000B6CF87 /* CTPasteboardViewController.xib in Resources */,
 				1ADD6988157A862A009A3B7B /* Credits.rtf in Resources */,
 				1ADF6679157AB343005E5E83 /* Cutup.icns in Resources */,
-				1A2AB05615FFE0F600DB0D06 /* pasteboard.pdf in Resources */,
+				1A2AB05615FFE0F600DB0D06 /* pasteboard_dropdown.pdf in Resources */,
 				1A2AB05915FFE6D100DB0D06 /* menubar_alt.pdf in Resources */,
 				1A2AB05A15FFE6D100DB0D06 /* menubar.pdf in Resources */,
 			);

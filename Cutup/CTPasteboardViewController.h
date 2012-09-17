@@ -12,13 +12,18 @@
 @interface CTPasteboardViewController : NSViewController
 
 @property IBOutlet NSView *pasteboardContentView;
-@property IBOutlet NSSegmentedControl *controlBar;
+@property IBOutlet NSButton *pasteButton;
+@property IBOutlet NSButton *leftButton;
+@property IBOutlet NSButton *rightButton;
 @property (strong) CTPasteboardItemViewController *pasteboardItemViewController;
 @property (strong) NSMutableArray *pasteboardItemsData;
 
 - (BOOL)archivePasteboardItemsData;
 - (BOOL)unarchivePasteboardItemsData;
 - (void)clearPasteboardHistory;
-- (IBAction)performControlBarAction:(NSSegmentedControl *)sender;
+
+- (IBAction)changePasteboard:(id)sender;
+- (IBAction)shiftPasteboardIndexLeft:(id)sender;
+- (IBAction)shiftPasteboardIndexRight:(id)sender;
 
 @end

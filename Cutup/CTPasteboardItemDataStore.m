@@ -63,8 +63,10 @@ NSString *const CTPasteboardDate = @"pasteboardItemDate";
 
 - (NSPasteboardItem *)fabricatePasteboardItemWithTypes:(NSArray *)types {
 	NSPasteboardItem *newPasteboardItem = [[NSPasteboardItem alloc] init];
-	for (NSString *type in types)
+	for (NSString *type in types) {
+		NSLog(@"Setting data for type %@", type);
 		[newPasteboardItem setData:[dataStore objectForKey:type] forType:type];
+	}
 	return newPasteboardItem;
 }
 
